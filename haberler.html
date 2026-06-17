@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nexus Esports haberleri – CS2, VALORANT, League of Legends, Dota 2 ve PUBG espor dünyasından son dakika gelişmeleri ve analizler." />
+  <title>Haberler – Nexus Esports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVİGASYON ==================== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Ana Navigasyon">
+      <div class="container nav-inner">
+
+        <a href="index.html" class="nav-logo" aria-label="Nexus Esports Ana Sayfa">
+          <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+          <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="index.html"            class="nav-link">Ana Sayfa</a></li>
+          <li><a href="haberler.html"          class="nav-link active" aria-current="page">Haberler</a></li>
+          <li><a href="maclar.html"            class="nav-link">Maçlar <span class="nav-live-badge">CANLI</span></a></li>
+          <li><a href="maclar.html#sonuclar"   class="nav-link">Sonuçlar</a></li>
+          <li><a href="index.html#galeri"      class="nav-link">Galeri</a></li>
+          <li><a href="hakkimda.html"          class="nav-link">Hakkımızda</a></li>
+          <li><a href="iletisim.html"          class="nav-link">İletişim</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-search-btn" data-search-open aria-label="Ara (Ctrl+K)" title="Haberlerde ara">🔍</button>
+          <a href="iletisim.html" class="btn btn-primary btn-sm">Kayıt Ol</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç/kapat">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== SAYFA HERO ==================== -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero-breadcrumb">
+        <a href="index.html">Ana Sayfa</a>
+        <span>›</span>
+        <span>Haberler</span>
+      </div>
+      <h1 class="page-hero-title">Son <span class="accent">Haberler</span></h1>
+      <p class="page-hero-sub">Espor dünyasından son dakika gelişmeleri, röportajlar ve derinlemesine analizler</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-wrapper">
+      <div class="container">
+        <div class="content-grid">
+
+          <!-- ======== ANA İÇERİK SÜTUNU ======== -->
+          <div class="main-col">
+
+            <!-- FİLTRE SEKMELERİ -->
+            <div class="news-filter-tabs" role="tablist" aria-label="Haber kategorileri">
+              <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tümü</button>
+              <button class="filter-tab" data-filter="cs2"      role="tab" aria-selected="false">CS2</button>
+              <button class="filter-tab" data-filter="val"      role="tab" aria-selected="false">VALORANT</button>
+              <button class="filter-tab" data-filter="lol"      role="tab" aria-selected="false">LoL</button>
+              <button class="filter-tab" data-filter="dota"     role="tab" aria-selected="false">Dota 2</button>
+              <button class="filter-tab" data-filter="pubg"     role="tab" aria-selected="false">PUBG Mobile</button>
+              <button class="filter-tab" data-filter="platform" role="tab" aria-selected="false">Platform</button>
+            </div>
+
+            <!-- HABER KARTLARI -->
+            <div class="news-grid" id="newsGrid">
+
+              <article class="news-card reveal" data-game="cs2">
+                <div class="news-thumb bg-cs2" aria-hidden="true">
+                  <img src="img/banner-cs2.svg" alt="CS2 Team Aurora" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-cs2">CS2</span></span>
+                  <a href="haber-aurora.html" class="news-title">Team Aurora'nın Başarı Formülü: "Disiplin Her Şeyin Önünde"</a>
+                  <p class="news-desc">Finaldeki rakibi Dark Matter'a hazırlık süreçlerini ve meta değişikliklerini nasıl takip ettiklerini anlattılar.</p>
+                  <div class="news-footer">
+                    <span class="news-date">12 May 2026</span>
+                    <span class="tag tag-orange">Röportaj</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="val">
+                <div class="news-thumb bg-val" aria-hidden="true">
+                  <img src="img/banner-val.svg" alt="VALORANT Patch 9.08" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-val">VALORANT</span></span>
+                  <a href="haber-valorant-patch.html" class="news-title">Patch 9.08 ile Gelen Ajan Değişiklikleri Türk Takımlarını Nasıl Etkiler?</a>
+                  <p class="news-desc">Yeni yama notlarını inceledik ve Türkiye'nin güçlü takımlarının meta uyumunu değerlendirdik.</p>
+                  <div class="news-footer">
+                    <span class="news-date">11 May 2026</span>
+                    <span class="tag tag-orange">Analiz</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="lol">
+                <div class="news-thumb bg-lol" aria-hidden="true">
+                  <img src="img/banner-lol.svg" alt="LoL Shadow MVP" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-lol">LoL</span></span>
+                  <a href="haber-lol-shadow.html" class="news-title">"Shadow" Süper Lig'in En Değerli Oyuncusu Seçildi</a>
+                  <p class="news-desc">Bu sezonki olağanüstü performansıyla dikkat çeken mid laner, oylama sonucunda birinciliği aldı.</p>
+                  <div class="news-footer">
+                    <span class="news-date">10 May 2026</span>
+                    <span class="tag tag-orange">Haber</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="dota">
+                <div class="news-thumb bg-dota" aria-hidden="true">
+                  <img src="img/banner-dota.svg" alt="Dota 2 Invitational" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-dota">Dota 2</span></span>
+                  <a href="haber-dota-invitational.html" class="news-title">Nexus Dota 2 Invitational'a Davet Edilen 8 Takım Açıklandı</a>
+                  <p class="news-desc">Haziran ayında yapılacak davetli turnuvada yarışacak takımlar ve format detayları belli oldu.</p>
+                  <div class="news-footer">
+                    <span class="news-date">9 May 2026</span>
+                    <span class="tag tag-orange">Duyuru</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="pubg">
+                <div class="news-thumb bg-pubg" aria-hidden="true">
+                  <img src="img/banner-pubg.svg" alt="PUBG Nations Cup" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-pubg">PUBG Mobile</span></span>
+                  <a href="haber-pubg-kadro.html" class="news-title">Türkiye Nations Cup Kadrosu: "Bu Takım Çok Güçlü"</a>
+                  <p class="news-desc">Koç açıklaması: Seçilen oyuncular Türkiye'nin şimdiye kadarki en dengeli kadrosunu oluşturuyor.</p>
+                  <div class="news-footer">
+                    <span class="news-date">8 May 2026</span>
+                    <span class="tag tag-orange">Kadro</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="platform">
+                <div class="news-thumb bg-nexus" aria-hidden="true">
+                  <img src="img/banner-nexus.svg" alt="Nexus Arena İstanbul" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-orange">Platform</span></span>
+                  <a href="haber-nexus-arena.html" class="news-title">Nexus Arena İstanbul 800m² Tesisi Eylül'de Açılıyor</a>
+                  <p class="news-desc">Kapalı tribün, yayın stüdyosu ve profesyonel antrenman alanlarıyla Türkiye'nin en büyük espor merkezi geliyor.</p>
+                  <div class="news-footer">
+                    <span class="news-date">7 May 2026</span>
+                    <span class="tag tag-orange">Nexus</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="cs2">
+                <div class="news-thumb bg-cs2" aria-hidden="true">
+                  <img src="img/gal-1.svg" alt="CS2 Pro League" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-cs2">CS2</span></span>
+                  <a href="haberler.html" class="news-title">Türkiye CS2 Pro League Sezon 3: Katılım Rekor Kırdı</a>
+                  <p class="news-desc">Bu sezon 48 takım kayıt yaptırdı. Grup aşaması 20 Mayıs'ta başlıyor, ödül havuzu ₺150.000.</p>
+                  <div class="news-footer">
+                    <span class="news-date">6 May 2026</span>
+                    <span class="tag tag-orange">Turnuva</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="val">
+                <div class="news-thumb bg-val" aria-hidden="true">
+                  <img src="img/banner-val.svg" alt="VCT Circuit" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-val">VALORANT</span></span>
+                  <a href="haberler.html" class="news-title">VCT Türkiye Circuit Üst Ligi İçin Başvurular Başladı</a>
+                  <p class="news-desc">Riot Games'in Türkiye özel ligine katılmak isteyen takımlar 25 Mayıs'a kadar başvurabilir.</p>
+                  <div class="news-footer">
+                    <span class="news-date">5 May 2026</span>
+                    <span class="tag tag-orange">Duyuru</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="lol">
+                <div class="news-thumb bg-lol" aria-hidden="true">
+                  <img src="img/banner-lol.svg" alt="LoL Süper Lig" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-lol">LoL</span></span>
+                  <a href="haberler.html" class="news-title">LoL Süper Lig'de Playoff Formatı Değişiyor: Çift Eleme Sistemi</a>
+                  <p class="news-desc">Türkiye Şampiyonlar Ligi'nden ilham alan yeni format seyirci kitlesini artırmayı hedefliyor.</p>
+                  <div class="news-footer">
+                    <span class="news-date">4 May 2026</span>
+                    <span class="tag tag-orange">Haber</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="dota">
+                <div class="news-thumb bg-dota" aria-hidden="true">
+                  <img src="img/banner-dota.svg" alt="Dota 2 Transfer" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-dota">Dota 2</span></span>
+                  <a href="haberler.html" class="news-title">CyberNova Dota 2 Takımına İki Yeni Yabancı Transfer</a>
+                  <p class="news-desc">Avrupa'dan getirilen iki oyuncuyla kadroyu uluslararası rekabete hazırlıyorlar.</p>
+                  <div class="news-footer">
+                    <span class="news-date">3 May 2026</span>
+                    <span class="tag tag-orange">Transfer</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="pubg">
+                <div class="news-thumb bg-pubg" aria-hidden="true">
+                  <img src="img/banner-pubg.svg" alt="PUBG World Cup" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-pubg">PUBG Mobile</span></span>
+                  <a href="haberler.html" class="news-title">PMWC 2026 Seçme Etapları: Türkiye Grubu Belli Oldu</a>
+                  <p class="news-desc">Türkiye'den 6 takım global finale çıkma şansı yakalayacak. İlk tur 25 Mayıs'ta başlıyor.</p>
+                  <div class="news-footer">
+                    <span class="news-date">2 May 2026</span>
+                    <span class="tag tag-orange">Turnuva</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card reveal" data-game="platform">
+                <div class="news-thumb bg-nexus" aria-hidden="true">
+                  <img src="img/banner-nexus.svg" alt="Nexus Mobil Uygulama" loading="lazy" />
+                </div>
+                <div class="news-body">
+                  <span class="news-category"><span class="tag tag-orange">Platform</span></span>
+                  <a href="haberler.html" class="news-title">Nexus Esports Mobil Uygulaması Haziran'da App Store'da</a>
+                  <p class="news-desc">iOS ve Android için hazırlanan uygulama canlı skor takibi, anlık bildirim ve özel içerikler sunacak.</p>
+                  <div class="news-footer">
+                    <span class="news-date">1 May 2026</span>
+                    <span class="tag tag-orange">Nexus</span>
+                  </div>
+                </div>
+              </article>
+
+            </div><!-- /news-grid -->
+
+            <!-- SAYFALAMA -->
+            <nav class="pagination" aria-label="Sayfalama">
+              <a href="haberler.html" class="page-btn page-btn--active" aria-current="page">1</a>
+              <a href="haberler.html" class="page-btn">2</a>
+              <a href="haberler.html" class="page-btn">3</a>
+              <span class="page-dots">…</span>
+              <a href="haberler.html" class="page-btn">8</a>
+            </nav>
+
+          </div><!-- /main-col -->
+
+          <!-- ======== SIDEBAR ======== -->
+          <aside class="sidebar-col" aria-label="Yan içerik">
+
+            <!-- Trend Haberler -->
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <span class="widget-title">🔥 Trend Haberler</span>
+              </div>
+              <div class="trending-list">
+                <a href="haber-aurora.html" class="trending-item">
+                  <span class="trending-num">01</span>
+                  <div class="trending-text">
+                    <span class="tag tag-cs2">CS2</span>
+                    <p>Team Aurora'nın Başarı Formülü</p>
+                  </div>
+                </a>
+                <a href="haber-valorant-patch.html" class="trending-item">
+                  <span class="trending-num">02</span>
+                  <div class="trending-text">
+                    <span class="tag tag-val">VALORANT</span>
+                    <p>Patch 9.08 Meta Analizi</p>
+                  </div>
+                </a>
+                <a href="haber-lol-shadow.html" class="trending-item">
+                  <span class="trending-num">03</span>
+                  <div class="trending-text">
+                    <span class="tag tag-lol">LoL</span>
+                    <p>Shadow Süper Lig MVP'si</p>
+                  </div>
+                </a>
+                <a href="haber-nexus-arena.html" class="trending-item">
+                  <span class="trending-num">04</span>
+                  <div class="trending-text">
+                    <span class="tag tag-orange">Platform</span>
+                    <p>Nexus Arena İstanbul Açılıyor</p>
+                  </div>
+                </a>
+                <a href="haber-pubg-kadro.html" class="trending-item">
+                  <span class="trending-num">05</span>
+                  <div class="trending-text">
+                    <span class="tag tag-pubg">PUBG</span>
+                    <p>Nations Cup Türkiye Kadrosu</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Yaklaşan Etkinlikler -->
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <span class="widget-title">📅 Yaklaşan Etkinlikler</span>
+                <a href="maclar.html" class="widget-all">Takvim</a>
+              </div>
+              <div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">30</div>
+                    <div class="event-month">May</div>
+                  </div>
+                  <div>
+                    <div class="event-name">Nexus CS2 Spring Cup Final</div>
+                    <div class="event-prize">₺250.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-cs2">CS2</span></div>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">01</div>
+                    <div class="event-month">Haz</div>
+                  </div>
+                  <div>
+                    <div class="event-name">VCT Türkiye Open Series</div>
+                    <div class="event-prize">₺180.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-val">VALORANT</span></div>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">15</div>
+                    <div class="event-month">Haz</div>
+                  </div>
+                  <div>
+                    <div class="event-name">LoL Süper Lig Playoffu</div>
+                    <div class="event-prize">₺500.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-lol">LoL</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Platform hakkında -->
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <span class="widget-title">⚡ Nexus Esports</span>
+              </div>
+              <div style="padding: var(--space-md);">
+                <p style="font-size: var(--text-xs); color: var(--clr-text-muted); line-height: 1.7; margin-bottom: var(--space-sm);">
+                  Türkiye'nin lider espor turnuva platformu. 120+ turnuva, 45K+ oyuncu ve ₺8M+ ödül havuzu.
+                </p>
+                <a href="hakkimda.html" class="btn btn-ghost btn-sm" style="width:100%; justify-content:center;">Hakkımızda →</a>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex; margin-bottom:var(--space-sm);">
+            <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+            <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+          </a>
+          <p>Türkiye'nin lider espor turnuva ve haber platformu. Rekabeti bir üst seviyeye taşıyoruz.</p>
+          <div class="footer-social" aria-label="Sosyal medya">
+            <a href="https://x.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+            <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://discord.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Discord">💬</a>
+            <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+            <a href="https://twitch.tv" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitch">🎮</a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Platform linkleri">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"            class="footer-link">Ana Sayfa</a></li>
+            <li><a href="haberler.html"          class="footer-link">Haberler</a></li>
+            <li><a href="maclar.html"            class="footer-link">Maçlar</a></li>
+            <li><a href="maclar.html#sonuclar"   class="footer-link">Sonuçlar</a></li>
+            <li><a href="index.html#galeri"      class="footer-link">Galeri</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Oyun Dalları</h4>
+          <ul class="footer-links">
+            <li><a href="haberler.html" class="footer-link">Counter-Strike 2</a></li>
+            <li><a href="haberler.html" class="footer-link">VALORANT</a></li>
+            <li><a href="haberler.html" class="footer-link">League of Legends</a></li>
+            <li><a href="haberler.html" class="footer-link">Dota 2</a></li>
+            <li><a href="haberler.html" class="footer-link">PUBG Mobile</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kurumsal</h4>
+          <ul class="footer-links">
+            <li><a href="hakkimda.html"  class="footer-link">Hakkımızda</a></li>
+            <li><a href="iletisim.html"  class="footer-link">İletişim</a></li>
+            <li><a href="iletisim.html"  class="footer-link">Sponsorluk</a></li>
+            <li><a href="iletisim.html"  class="footer-link">Kariyer</a></li>
+            <li><a href="iletisim.html"  class="footer-link">KVKK</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>Nexus Esports</span>. Tüm hakları saklıdır.</p>
+        <a href="admin.html" style="font-size:0.65rem; color: var(--clr-text-dim); text-decoration:none; opacity:0.4; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.4">⚙ Admin</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Yukarı git butonu -->
+  <button id="scrollToTop" aria-label="Sayfanın başına git" title="Yukarı Çık">↑</button>
+
+  <!-- Arama Overlay -->
+  <div id="searchOverlay" role="dialog" aria-modal="true" aria-label="Site geneli arama">
+    <div class="search-box">
+      <button id="searchClose" aria-label="Aramayı kapat">×</button>
+      <input id="searchInput" type="search" placeholder="Haberlerde ara… (CS2, VALORANT, LoL…)" autocomplete="off" spellcheck="false" />
+      <div id="searchResults" role="listbox" aria-label="Arama sonuçları"></div>
+      <p class="search-hint">ESC ile kapat · Ctrl+K ile aç</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

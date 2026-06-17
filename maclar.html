@@ -1,0 +1,1208 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nexus Esports maç takvimi – canlı CS2 maç takibi, yaklaşan turnuvalar ve geçmiş sonuçlar." />
+  <title>Maçlar &amp; Sonuçlar – Nexus Esports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .live-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .live-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .live-card:hover { border-color: var(--clr-primary); transform: translateY(-2px); }
+
+    .lc-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: var(--clr-bg);
+      border-bottom: 1px solid var(--clr-border);
+      font-size: 0.68rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .lc-live-dot {
+      width: 7px; height: 7px;
+      background: var(--clr-live);
+      border-radius: 50%;
+      animation: pulse-dot 1s ease-in-out infinite alternate;
+      flex-shrink: 0;
+    }
+    .lc-game { display: flex; align-items: center; gap: 5px; color: var(--clr-text-muted); flex: 1; }
+    .lc-format { color: var(--clr-text-dim); font-size: 0.6rem; }
+
+    .lc-board {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 12px;
+      gap: 8px;
+    }
+
+    .lc-team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .lc-badge img { border-radius: 6px; }
+
+    .lc-name {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--clr-text);
+      text-align: center;
+    }
+
+    .lc-side-tag {
+      font-size: 0.58rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      border: 1px solid var(--clr-border);
+      color: var(--clr-text-dim);
+    }
+
+    .lc-score-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .lc-score {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1;
+    }
+    .lc-score span { color: var(--clr-text); }
+    .lc-sep { color: var(--clr-text-dim); font-weight: 400; }
+
+    .lc-meta {
+      font-size: 0.6rem;
+      color: var(--clr-text-dim);
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    /* PUBG leaderboard card */
+    .lc-pubg-board { padding: 0 0 8px; }
+    .lc-pubg-header {
+      display: grid;
+      grid-template-columns: 28px 1fr 36px 36px;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 0.58rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--clr-text-dim);
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .lc-pubg-row {
+      display: grid;
+      grid-template-columns: 28px 1fr 36px 36px;
+      gap: 4px;
+      align-items: center;
+      padding: 6px 12px;
+      border-bottom: 1px solid var(--clr-border);
+      font-size: 0.72rem;
+    }
+    .lc-pubg-row:last-of-type { border-bottom: none; }
+    .lc-pubg-pos { font-family: var(--font-heading); font-weight: 700; color: var(--clr-text-dim); }
+    .lc-pubg-pos.top { color: var(--clr-primary); }
+    .lc-pubg-team { color: var(--clr-text); font-family: var(--font-heading); font-size: 0.7rem; }
+    .lc-pubg-alive { font-size: 0.65rem; color: var(--clr-live); text-align: center; }
+    .lc-pubg-kills { font-family: var(--font-heading); color: var(--clr-text-muted); font-size: 0.7rem; text-align: right; }
+    .lc-pubg-kills span { color: var(--clr-primary); }
+    .lc-pubg-meta {
+      padding: 6px 12px 2px;
+      font-size: 0.6rem;
+      color: var(--clr-text-dim);
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-top: 1px solid var(--clr-border);
+      margin-top: 4px;
+    }
+
+    /* ═══ DETAIL PANEL CSS ═══ */
+    .live-card.lc-selected { border-color: var(--clr-primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--clr-primary) 30%, transparent); }
+    .ldp-panel.active { display: block; }
+
+    .ldp-panel {
+      display: none;
+      margin-bottom: var(--space-xl);
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .ldp-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px;
+      background: var(--clr-bg);
+      border-bottom: 1px solid var(--clr-border);
+      font-family: var(--font-heading);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .ldp-header-dot { width:8px; height:8px; background:var(--clr-live); border-radius:50%; animation:pulse-dot 1s ease-in-out infinite alternate; flex-shrink:0; }
+    .ldp-header-title { flex:1; color:var(--clr-text-muted); }
+    .ldp-close-btn {
+      background:none; border:1px solid var(--clr-border); color:var(--clr-text-dim);
+      border-radius:4px; padding:3px 10px; cursor:pointer; font-size:0.7rem;
+      font-family:var(--font-heading); letter-spacing:1px; transition:border-color 0.2s;
+    }
+    .ldp-close-btn:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
+
+    .ldp-scoreboard {
+      display:flex; align-items:center; justify-content:center; gap:0;
+      padding:14px 16px 10px;
+      border-bottom:1px solid var(--clr-border);
+      flex-wrap:wrap;
+    }
+    .ldp-team { display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; min-width:90px; }
+    .ldp-team-name { font-family:var(--font-heading); font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--clr-text); text-align:center; }
+    .ldp-team-side { font-size:0.58rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px; padding:2px 7px; border-radius:3px; border:1px solid var(--clr-border); color:var(--clr-text-dim); }
+    .ldp-score { font-family:var(--font-heading); font-size:2.4rem; font-weight:700; color:var(--clr-text); line-height:1; text-align:center; flex-shrink:0; padding:0 20px; }
+    .ldp-score .ldp-sep { color:var(--clr-text-dim); font-weight:400; margin:0 2px; }
+
+    .ldp-alive-row {
+      display:flex; align-items:center; justify-content:center; gap:20px;
+      padding:6px 16px;
+      font-size:0.65rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px;
+      color:var(--clr-text-dim); border-bottom:1px solid var(--clr-border);
+    }
+    .ldp-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--clr-text-dim); margin-right:3px; }
+    .ldp-dot.alive { background:var(--clr-primary); }
+    .ldp-dot.dead  { background:#444; }
+
+    .ldp-round-bar {
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      padding:6px 16px;
+      font-size:0.62rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px;
+      color:var(--clr-text-dim); border-bottom:1px solid var(--clr-border);
+      flex-wrap:wrap;
+    }
+    .ldp-round-hist { display:flex; gap:3px; flex-wrap:wrap; }
+    .ldp-rnd-pill {
+      width:16px; height:16px; border-radius:3px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:0.5rem; font-family:var(--font-heading);
+    }
+    .ldp-rnd-pill.ct  { background:color-mix(in srgb,#60a5fa 25%,transparent); color:#93c5fd; }
+    .ldp-rnd-pill.t   { background:color-mix(in srgb,#fbbf24 25%,transparent); color:#fde68a; }
+    .ldp-rnd-pill.cur { background:var(--clr-primary); color:#fff; }
+    .ldp-rnd-sep { width:1px; background:var(--clr-border); height:16px; margin:0 3px; flex-shrink:0; }
+    .ldp-rnd-label { font-size:0.5rem; font-family:var(--font-heading); color:var(--clr-text-dim); padding:0 2px; }
+    .ldp-dot.alive-ct { background:#60a5fa; }
+    .ldp-dot.alive-t  { background:#fbbf24; }
+    .ldp-dot.alive-atk { background:#f87171; }
+    .ldp-dot.alive-def { background:#4ade80; }
+    .ldp-player-row.dead { opacity:0.4; }
+    .ldp-hp-fill.high { background:var(--clr-primary); }
+    .ldp-hp-fill.mid  { background:#f59e0b; }
+    .ldp-hp-fill.low  { background:#ef4444; }
+
+    .ldp-bomb-wrap { display:flex; align-items:center; gap:8px; }
+    .ldp-bomb-bar { width:90px; height:6px; background:var(--clr-border); border-radius:3px; overflow:hidden; }
+    .ldp-bomb-fill { height:100%; background:#ef4444; border-radius:3px; transition:width 0.5s linear; }
+
+    .ldp-body {
+      display:grid;
+      grid-template-columns: 1fr 1fr 260px;
+      gap:0;
+    }
+    @media(max-width:900px){ .ldp-body { grid-template-columns:1fr 1fr; } .ldp-feed-col { display:none; } }
+    @media(max-width:600px){ .ldp-body { grid-template-columns:1fr; } }
+
+    .ldp-players {
+      padding:10px 12px;
+      border-right:1px solid var(--clr-border);
+    }
+    .ldp-players:last-of-type { border-right:none; }
+    .ldp-ptable-head {
+      display:grid; grid-template-columns:1fr 28px 28px 28px 28px;
+      font-size:0.55rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px;
+      color:var(--clr-text-dim); padding:0 0 6px; border-bottom:1px solid var(--clr-border);
+      margin-bottom:6px;
+    }
+    .ldp-player-row {
+      display:grid; grid-template-columns:1fr 28px 28px 28px 28px;
+      align-items:center; padding:4px 0; border-bottom:1px solid color-mix(in srgb,var(--clr-border) 50%,transparent);
+      font-size:0.65rem;
+    }
+    .ldp-player-row:last-child { border-bottom:none; }
+    .ldp-pname { display:flex; flex-direction:column; gap:1px; }
+    .ldp-pname small { font-size:0.52rem; color:var(--clr-text-dim); }
+    .ldp-pstat { text-align:center; color:var(--clr-text-muted); font-family:var(--font-heading); font-size:0.65rem; }
+    .ldp-pstat.kills { color:var(--clr-primary); }
+    .ldp-hp-bar { width:100%; height:3px; background:var(--clr-border); border-radius:2px; overflow:hidden; margin-top:2px; }
+    .ldp-hp-fill { height:100%; background:var(--clr-primary); border-radius:2px; transition:width .4s; }
+
+    .ldp-feed-col {
+      border-left:1px solid var(--clr-border);
+      display:flex; flex-direction:column;
+    }
+    .ldp-feed-title {
+      padding:8px 12px 6px;
+      font-size:0.6rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px;
+      color:var(--clr-text-dim); border-bottom:1px solid var(--clr-border);
+    }
+    .ldp-feed {
+      flex:1; overflow-y:auto; max-height:320px;
+      display:flex; flex-direction:column; gap:3px; padding:8px 10px;
+    }
+    .ldp-feed-item {
+      font-size:0.62rem; padding:5px 8px; border-radius:4px;
+      line-height:1.4;
+    }
+    .ldp-feed-item.kill  { background:color-mix(in srgb,var(--clr-primary) 10%,transparent); border-left:2px solid var(--clr-primary); }
+    .ldp-feed-item.obj   { background:color-mix(in srgb,#f59e0b 10%,transparent); border-left:2px solid #f59e0b; color:#fde68a; }
+    .ldp-feed-item.event { background:color-mix(in srgb,var(--clr-border) 40%,transparent); color:var(--clr-text-dim); }
+    .ldp-feed-item.bomb  { background:color-mix(in srgb,#ef4444 15%,transparent); border-left:2px solid #ef4444; }
+    .ldp-feed-kill-line { color:var(--clr-text); }
+    .ldp-feed-kill-line .fk { color:var(--clr-primary); font-weight:600; }
+    .ldp-feed-kill-line .fv { color:#f87171; }
+    .ldp-feed-kill-line .fw { color:var(--clr-text-dim); font-size:0.55rem; }
+
+    .ldp-objectives {
+      padding:8px 16px;
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center;
+      border-top:1px solid var(--clr-border);
+      font-size:0.65rem; font-family:var(--font-heading);
+    }
+    .ldp-obj-item { display:flex; align-items:center; gap:6px; }
+    .ldp-obj-a { color:#60a5fa; }
+    .ldp-obj-b { color:#f87171; }
+    .ldp-obj-sep { color:var(--clr-text-dim); }
+
+    /* PUBG detail */
+    .ldp-pubg-grid {
+      display:grid; grid-template-columns:1fr 260px; gap:0;
+    }
+    @media(max-width:700px){ .ldp-pubg-grid { grid-template-columns:1fr; } }
+    .ldp-pubg-table { padding:10px 12px; }
+    .ldp-pubg-row {
+      display:grid; grid-template-columns:32px 1fr 60px 52px 36px;
+      align-items:center; gap:4px; padding:5px 0;
+      font-size:0.68rem; border-bottom:1px solid color-mix(in srgb,var(--clr-border) 50%,transparent);
+    }
+    .ldp-pubg-row:last-child { border-bottom:none; }
+    .ldp-pubg-pos { font-family:var(--font-heading); font-weight:700; color:var(--clr-text-dim); }
+    .ldp-pubg-pos.p1 { color:#fbbf24; }
+    .ldp-pubg-pos.p2 { color:#94a3b8; }
+    .ldp-pubg-pos.p3 { color:#b45309; }
+    .ldp-pubg-team { font-family:var(--font-heading); color:var(--clr-text); font-size:0.7rem; }
+    .ldp-pubg-stat { text-align:center; color:var(--clr-text-muted); }
+    .ldp-pubg-stat.kills { color:var(--clr-primary); }
+    .ldp-pubg-head {
+      display:grid; grid-template-columns:32px 1fr 60px 52px 36px;
+      gap:4px; padding:0 0 6px; border-bottom:1px solid var(--clr-border); margin-bottom:4px;
+      font-size:0.55rem; font-family:var(--font-heading); text-transform:uppercase; letter-spacing:1px; color:var(--clr-text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVİGASYON ==================== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Ana Navigasyon">
+      <div class="container nav-inner">
+
+        <a href="index.html" class="nav-logo" aria-label="Nexus Esports Ana Sayfa">
+          <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+          <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="index.html"            class="nav-link">Ana Sayfa</a></li>
+          <li><a href="haberler.html"          class="nav-link">Haberler</a></li>
+          <li><a href="maclar.html"            class="nav-link active" aria-current="page">Maçlar <span class="nav-live-badge">CANLI</span></a></li>
+          <li><a href="maclar.html#sonuclar"   class="nav-link">Sonuçlar</a></li>
+          <li><a href="index.html#galeri"      class="nav-link">Galeri</a></li>
+          <li><a href="hakkimda.html"          class="nav-link">Hakkımızda</a></li>
+          <li><a href="iletisim.html"          class="nav-link">İletişim</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-search-btn" data-search-open aria-label="Ara (Ctrl+K)" title="Haberlerde ara">🔍</button>
+          <a href="iletisim.html" class="btn btn-primary btn-sm">Kayıt Ol</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç/kapat">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== SAYFA HERO ==================== -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero-breadcrumb">
+        <a href="index.html">Ana Sayfa</a>
+        <span>›</span>
+        <span>Maçlar &amp; Sonuçlar</span>
+      </div>
+      <h1 class="page-hero-title">Maçlar &amp; <span class="accent">Sonuçlar</span></h1>
+      <p class="page-hero-sub">Canlı maç takibi, günlük program ve tamamlanan maç sonuçları</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-wrapper">
+      <div class="container">
+
+        <!-- ==================== CANLI MAÇLAR ==================== -->
+        <section id="canli" aria-labelledby="liveTitle">
+          <div class="section-title-bar">
+            <h2 id="liveTitle">Canlı <span class="accent">Maçlar</span></h2>
+            <span class="tag tag-live" style="animation: pulse-dot 1s ease-in-out infinite alternate;">● 5 CANLI MAÇ</span>
+          </div>
+
+          <div class="live-cards-grid">
+
+            <!-- ── CS2 ── -->
+            <div class="live-card" data-detail="cs2" style="cursor:pointer;" title="Detay için tıkla">
+              <div class="lc-head">
+                <span class="lc-live-dot"></span>
+                <span class="lc-game"><img src="img/logo-game-cs2.svg" width="14" height="14" alt="CS2"> Spring Cup Final</span>
+                <span class="lc-format">BO3 · Map 2/3</span>
+              </div>
+              <div class="lc-board">
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-aurora.svg" width="44" height="44" alt="Team Aurora"></div>
+                  <div class="lc-name">Team Aurora</div>
+                  <div class="lc-side-tag">CT</div>
+                </div>
+                <div class="lc-score-col">
+                  <div class="lc-score"><span id="live-cs2-a">14</span><span class="lc-sep">:</span><span id="live-cs2-b">11</span></div>
+                  <div class="lc-meta">R<span id="live-cs2-round">26</span> · <span id="live-cs2-timer">1:55</span> · Inferno</div>
+                </div>
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-darkmatter.svg" width="44" height="44" alt="Dark Matter"></div>
+                  <div class="lc-name">Dark Matter</div>
+                  <div class="lc-side-tag">T</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── VALORANT ── -->
+            <div class="live-card" data-detail="val" style="cursor:pointer;" title="Detay için tıkla">
+              <div class="lc-head">
+                <span class="lc-live-dot"></span>
+                <span class="lc-game"><img src="img/logo-game-valorant.svg" width="14" height="14" alt="VALORANT"> VCT Open Series</span>
+                <span class="lc-format">BO3 · Map 1/3</span>
+              </div>
+              <div class="lc-board">
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-nova.svg" width="44" height="44" alt="Nova Esports"></div>
+                  <div class="lc-name">Nova Esports</div>
+                  <div class="lc-side-tag">ATK</div>
+                </div>
+                <div class="lc-score-col">
+                  <div class="lc-score"><span id="live-val-a">9</span><span class="lc-sep">:</span><span id="live-val-b">8</span></div>
+                  <div class="lc-meta">R<span id="live-val-round">18</span> · <span id="live-val-timer">1:22</span> · Bind</div>
+                </div>
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-stormgg.svg" width="44" height="44" alt="Storm GG"></div>
+                  <div class="lc-name">Storm GG</div>
+                  <div class="lc-side-tag">DEF</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── League of Legends ── -->
+            <div class="live-card" data-detail="lol" style="cursor:pointer;" title="Detay için tıkla">
+              <div class="lc-head">
+                <span class="lc-live-dot"></span>
+                <span class="lc-game"><img src="img/logo-game-lol.svg" width="14" height="14" alt="LoL"> Süper Lig</span>
+                <span class="lc-format">Hafta 8 · BO1</span>
+              </div>
+              <div class="lc-board">
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-apexwolves.svg" width="44" height="44" alt="Apex Wolves"></div>
+                  <div class="lc-name">Apex Wolves</div>
+                  <div class="lc-side-tag">Mavi</div>
+                </div>
+                <div class="lc-score-col">
+                  <div class="lc-score"><span id="live-lol-a">31</span><span class="lc-sep">/</span><span id="live-lol-b">22</span></div>
+                  <div class="lc-meta"><span id="live-lol-time">28:44</span> · Kill</div>
+                </div>
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-ironforge.svg" width="44" height="44" alt="Iron Forge"></div>
+                  <div class="lc-name">Iron Forge</div>
+                  <div class="lc-side-tag">Kırmızı</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── Dota 2 ── -->
+            <div class="live-card" data-detail="dota" style="cursor:pointer;" title="Detay için tıkla">
+              <div class="lc-head">
+                <span class="lc-live-dot"></span>
+                <span class="lc-game"><img src="img/logo-game-dota2.svg" width="14" height="14" alt="Dota 2"> Invitational</span>
+                <span class="lc-format">BO3 · Oyun 1/3</span>
+              </div>
+              <div class="lc-board">
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-phantom5.svg" width="44" height="44" alt="Phantom 5"></div>
+                  <div class="lc-name">Phantom 5</div>
+                  <div class="lc-side-tag">Radiant</div>
+                </div>
+                <div class="lc-score-col">
+                  <div class="lc-score"><span id="live-dota-a">28</span><span class="lc-sep">/</span><span id="live-dota-b">19</span></div>
+                  <div class="lc-meta"><span id="live-dota-time">35:20</span> · Kill</div>
+                </div>
+                <div class="lc-team">
+                  <div class="lc-badge"><img src="img/logo-team-cybernova.svg" width="44" height="44" alt="CyberNova"></div>
+                  <div class="lc-name">CyberNova</div>
+                  <div class="lc-side-tag">Dire</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── PUBG – Anlık Sıralama ── -->
+            <div class="live-card" data-detail="pubg" style="cursor:pointer;" title="Detay için tıkla">
+              <div class="lc-head">
+                <span class="lc-live-dot"></span>
+                <span class="lc-game"><img src="img/logo-game-pubg.svg" width="14" height="14" alt="PUBG"> Nations Cup</span>
+                <span class="lc-format">Oyun 3 / 6</span>
+              </div>
+              <div class="lc-pubg-board">
+                <div class="lc-pubg-header">
+                  <span>#</span><span>Takım</span><span>Sağ</span><span>Kill</span>
+                </div>
+                <div class="lc-pubg-row">
+                  <span class="lc-pubg-pos top">1</span>
+                  <span class="lc-pubg-team">Desert Vipers</span>
+                  <span class="lc-pubg-alive">4/4</span>
+                  <span class="lc-pubg-kills"><span id="live-pubg-kills">15</span> K</span>
+                </div>
+                <div class="lc-pubg-row">
+                  <span class="lc-pubg-pos">2</span>
+                  <span class="lc-pubg-team">Horizon Rush</span>
+                  <span class="lc-pubg-alive">3/4</span>
+                  <span class="lc-pubg-kills">12 K</span>
+                </div>
+                <div class="lc-pubg-row">
+                  <span class="lc-pubg-pos">3</span>
+                  <span class="lc-pubg-team">CyberNova</span>
+                  <span class="lc-pubg-alive">2/4</span>
+                  <span class="lc-pubg-kills">9 K</span>
+                </div>
+                <div class="lc-pubg-row">
+                  <span class="lc-pubg-pos">4</span>
+                  <span class="lc-pubg-team">Phantom 5</span>
+                  <span class="lc-pubg-alive">4/4</span>
+                  <span class="lc-pubg-kills">6 K</span>
+                </div>
+                <div class="lc-pubg-meta">8 takım kaldı · Erangel</div>
+              </div>
+            </div>
+
+          </div><!-- /live-cards-grid -->
+
+          <!-- ═══════════════ DETAIL PANELS ═══════════════ -->
+
+          <!-- CS2 Detail -->
+          <div class="ldp-panel" id="ldp-cs2">
+              <div class="ldp-header">
+                <span class="ldp-header-dot"></span>
+                <span class="ldp-header-title">CS2 · Spring Cup Final · Inferno · <span id="ldp-cs2-round">Raund 26</span> · <span id="ldp-cs2-timer">1:55</span></span>
+                <button class="ldp-close-btn" data-close="cs2">✕ KAPAT</button>
+              </div>
+              <div class="ldp-scoreboard">
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Team Aurora</div>
+                  <div class="ldp-team-side">CT</div>
+                  <div style="font-size:0.6rem;color:var(--clr-text-dim);margin-top:2px;">Eko: <span id="ldp-cs2-eco-ct">$4200</span></div>
+                </div>
+                <div class="ldp-score"><span id="ldp-cs2-a">14</span><span class="ldp-sep">:</span><span id="ldp-cs2-b">11</span></div>
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Dark Matter</div>
+                  <div class="ldp-team-side">T</div>
+                  <div style="font-size:0.6rem;color:var(--clr-text-dim);margin-top:2px;">Eko: <span id="ldp-cs2-eco-t">$2100</span></div>
+                </div>
+              </div>
+              <div class="ldp-alive-row">
+                <span><span class="ldp-dot alive"></span> CT Sağ: <span id="ldp-cs2-alive-ct">5</span></span>
+                <div class="ldp-bomb-wrap">💣 Bomba: <div class="ldp-bomb-bar"><div class="ldp-bomb-fill" id="ldp-cs2-bomb-fill" style="width:0%"></div></div><span id="ldp-cs2-bomb">—</span></div>
+                <span><span class="ldp-dot alive"></span> T Sağ: <span id="ldp-cs2-alive-t">5</span></span>
+              </div>
+              <div class="ldp-round-bar">
+                <div class="ldp-round-hist" id="ldp-cs2-hist"></div>
+              </div>
+              <div class="ldp-body">
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>CT (Aurora)</span><span>K</span><span>D</span><span>A</span><span>HP</span></div>
+                  <div id="ldp-cs2-ct"></div>
+                </div>
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>T (Dark Matter)</span><span>K</span><span>D</span><span>A</span><span>HP</span></div>
+                  <div id="ldp-cs2-t"></div>
+                </div>
+                <div class="ldp-feed-col">
+                  <div class="ldp-feed-title">🔫 Kill Feed</div>
+                  <div class="ldp-feed" id="ldp-cs2-feed"></div>
+                </div>
+              </div>
+          </div>
+
+          <!-- VALORANT Detail -->
+          <div class="ldp-panel" id="ldp-val">
+              <div class="ldp-header">
+                <span class="ldp-header-dot"></span>
+                <span class="ldp-header-title">VALORANT · VCT Open Series · Bind · <span id="ldp-val-round-disp">Raund 18</span> · <span id="ldp-val-timer">1:40</span></span>
+                <button class="ldp-close-btn" data-close="val">✕ KAPAT</button>
+              </div>
+              <div class="ldp-scoreboard">
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Nova Esports</div>
+                  <div class="ldp-team-side">ATK</div>
+                </div>
+                <div class="ldp-score"><span id="ldp-val-a">9</span><span class="ldp-sep">:</span><span id="ldp-val-b">8</span></div>
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Storm GG</div>
+                  <div class="ldp-team-side">DEF</div>
+                </div>
+              </div>
+              <div class="ldp-alive-row">
+                <span>ATK Sağ: <span id="ldp-val-alive-atk">5</span></span>
+                <span>DEF Sağ: <span id="ldp-val-alive-def">5</span></span>
+              </div>
+              <div class="ldp-body">
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>ATK (Nova)</span><span>K</span><span>D</span><span>A</span><span>HP</span></div>
+                  <div id="ldp-val-atk"></div>
+                </div>
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>DEF (Storm)</span><span>K</span><span>D</span><span>A</span><span>HP</span></div>
+                  <div id="ldp-val-def"></div>
+                </div>
+                <div class="ldp-feed-col">
+                  <div class="ldp-feed-title">🔫 Kill Feed</div>
+                  <div class="ldp-feed" id="ldp-val-feed"></div>
+                </div>
+              </div>
+          </div>
+
+          <!-- LoL Detail -->
+          <div class="ldp-panel" id="ldp-lol">
+              <div class="ldp-header">
+                <span class="ldp-header-dot"></span>
+                <span class="ldp-header-title">League of Legends · Süper Lig Hafta 8 · <span id="ldp-lol-timer">28:44</span></span>
+                <button class="ldp-close-btn" data-close="lol">✕ KAPAT</button>
+              </div>
+              <div class="ldp-scoreboard">
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Apex Wolves</div>
+                  <div class="ldp-team-side">Mavi</div>
+                </div>
+                <div class="ldp-score"><span id="ldp-lol-a">31</span><span class="ldp-sep">/</span><span id="ldp-lol-b">22</span></div>
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Iron Forge</div>
+                  <div class="ldp-team-side">Kırmızı</div>
+                </div>
+              </div>
+              <div class="ldp-objectives" id="ldp-lol-obj"></div>
+              <div class="ldp-body">
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>Mavi (Apex)</span><span>K</span><span>D</span><span>A</span><span>—</span></div>
+                  <div id="ldp-lol-blue"></div>
+                </div>
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>Kırmızı (Iron)</span><span>K</span><span>D</span><span>A</span><span>—</span></div>
+                  <div id="ldp-lol-red"></div>
+                </div>
+                <div class="ldp-feed-col">
+                  <div class="ldp-feed-title">📋 Event Feed</div>
+                  <div class="ldp-feed" id="ldp-lol-feed"></div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Dota 2 Detail -->
+          <div class="ldp-panel" id="ldp-dota">
+              <div class="ldp-header">
+                <span class="ldp-header-dot"></span>
+                <span class="ldp-header-title">Dota 2 · Invitational · Oyun 1/3 · <span id="ldp-dota-timer">35:20</span></span>
+                <button class="ldp-close-btn" data-close="dota">✕ KAPAT</button>
+              </div>
+              <div class="ldp-scoreboard">
+                <div class="ldp-team">
+                  <div class="ldp-team-name">Phantom 5</div>
+                  <div class="ldp-team-side">Radiant</div>
+                </div>
+                <div class="ldp-score"><span id="ldp-dota-a">28</span><span class="ldp-sep">/</span><span id="ldp-dota-b">19</span></div>
+                <div class="ldp-team">
+                  <div class="ldp-team-name">CyberNova</div>
+                  <div class="ldp-team-side">Dire</div>
+                </div>
+              </div>
+              <div class="ldp-objectives" id="ldp-dota-obj"></div>
+              <div class="ldp-body">
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>Radiant (Phantom)</span><span>K</span><span>D</span><span>A</span><span>—</span></div>
+                  <div id="ldp-dota-radiant"></div>
+                </div>
+                <div class="ldp-players">
+                  <div class="ldp-ptable-head"><span>Dire (CyberNova)</span><span>K</span><span>D</span><span>A</span><span>—</span></div>
+                  <div id="ldp-dota-dire"></div>
+                </div>
+                <div class="ldp-feed-col">
+                  <div class="ldp-feed-title">📋 Event Feed</div>
+                  <div class="ldp-feed" id="ldp-dota-feed"></div>
+                </div>
+              </div>
+          </div>
+
+          <!-- PUBG Detail -->
+          <div class="ldp-panel" id="ldp-pubg">
+              <div class="ldp-header">
+                <span class="ldp-header-dot"></span>
+                <span class="ldp-header-title">PUBG · Nations Cup · Erangel · <span id="ldp-pubg-alive-count">8 takım kaldı</span></span>
+                <button class="ldp-close-btn" data-close="pubg">✕ KAPAT</button>
+              </div>
+              <div class="ldp-pubg-grid">
+                <div class="ldp-pubg-table">
+                  <div class="ldp-pubg-head">
+                    <span>#</span><span>Takım</span><span>Sağ / Toplam</span><span>Kill</span><span>Durum</span>
+                  </div>
+                  <div id="ldp-pubg-table-body"></div>
+                </div>
+                <div class="ldp-feed-col" style="border-left:1px solid var(--clr-border);">
+                  <div class="ldp-feed-title">📋 Event Feed</div>
+                  <div class="ldp-feed" id="ldp-pubg-feed"></div>
+                </div>
+              </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== MAÇLAR GRID ==================== -->
+        <div class="content-grid">
+
+          <!-- ======== ANA İÇERİK ======== -->
+          <div class="main-col">
+
+            <!-- FİLTRE SEKMELERİ -->
+            <div class="match-filter-tabs" role="tablist" aria-label="Maç kategorileri">
+              <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tümü</button>
+              <button class="filter-tab" data-filter="cs2"  role="tab" aria-selected="false">CS2</button>
+              <button class="filter-tab" data-filter="val"  role="tab" aria-selected="false">VALORANT</button>
+              <button class="filter-tab" data-filter="lol"  role="tab" aria-selected="false">LoL</button>
+              <button class="filter-tab" data-filter="dota" role="tab" aria-selected="false">Dota 2</button>
+              <button class="filter-tab" data-filter="pubg" role="tab" aria-selected="false">PUBG</button>
+            </div>
+
+            <!-- ---- YAKLAŞAN MAÇLAR ---- -->
+            <section class="matches-section" id="maclar" aria-labelledby="upcomingTitle">
+              <div class="section-title-bar">
+                <h2 id="upcomingTitle">Yaklaşan <span class="accent">Maçlar</span></h2>
+              </div>
+
+              <div class="match-list" role="table" aria-label="Yaklaşan maçlar tablosu">
+
+                <div class="match-row header-row" role="row">
+                  <span role="columnheader">Saat</span>
+                  <span role="columnheader" style="text-align:right;">Takım A</span>
+                  <span role="columnheader" style="text-align:center;">vs</span>
+                  <span role="columnheader">Takım B</span>
+                  <span role="columnheader">Etkinlik</span>
+                  <span role="columnheader">Format</span>
+                </div>
+
+                <div class="match-date-divider" role="rowgroup">13 Mayıs 2026 — Yarın</div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell">15:00</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span>Phantom 5</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-phantom5.svg" width="28" height="28" alt="Phantom 5"></div>
+                  </div>
+                  <div class="match-score-col" role="cell"><span class="score-vs">vs</span></div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-cybernova.svg" width="28" height="28" alt="CyberNova"></div>
+                    <span>CyberNova</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-dota2.svg" class="game-logo-sm" alt="Dota 2"> Invitational
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell">17:00</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span>Desert Vipers</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-desertviper.svg" width="28" height="28" alt="Desert Vipers"></div>
+                  </div>
+                  <div class="match-score-col" role="cell"><span class="score-vs">vs</span></div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-horizonrush.svg" width="28" height="28" alt="Horizon Rush"></div>
+                    <span>Horizon Rush</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-pubg.svg" class="game-logo-sm" alt="PUBG"> Nations Cup
+                  </div>
+                  <div class="match-format" role="cell">TPP</div>
+                </div>
+
+                <div class="match-date-divider" role="rowgroup">14 Mayıs 2026</div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell">16:00</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span>Team Aurora</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-aurora.svg" width="28" height="28" alt="Team Aurora"></div>
+                  </div>
+                  <div class="match-score-col" role="cell"><span class="score-vs">vs</span></div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-nova.svg" width="28" height="28" alt="Nova Esports"></div>
+                    <span>Nova Esports</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-cs2.svg" class="game-logo-sm" alt="CS2"> Pro League S3
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell">19:00</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span>Storm GG</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-stormgg.svg" width="28" height="28" alt="Storm GG"></div>
+                  </div>
+                  <div class="match-score-col" role="cell"><span class="score-vs">vs</span></div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-ironforge.svg" width="28" height="28" alt="Iron Forge"></div>
+                    <span>Iron Forge</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-valorant.svg" class="game-logo-sm" alt="VALORANT"> VCT Circuit
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- ---- MAÇ SONUÇLARI ---- -->
+            <section class="matches-section" id="sonuclar" aria-labelledby="resultsTitle">
+              <div class="section-title-bar">
+                <h2 id="resultsTitle">Son <span class="accent">Sonuçlar</span></h2>
+              </div>
+
+              <div class="match-list" role="table" aria-label="Maç sonuçları tablosu">
+
+                <div class="match-row header-row" role="row">
+                  <span role="columnheader">Tarih</span>
+                  <span role="columnheader" style="text-align:right;">Kazanan</span>
+                  <span role="columnheader" style="text-align:center;">Skor</span>
+                  <span role="columnheader">Mağlup</span>
+                  <span role="columnheader">Etkinlik</span>
+                  <span role="columnheader">Format</span>
+                </div>
+
+                <div class="match-date-divider" role="rowgroup">11 Mayıs 2026</div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">11 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Team Aurora</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-aurora.svg" width="28" height="28" alt="Team Aurora"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">2</span><span class="score-sep">–</span><span class="score-b">0</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-nova.svg" width="28" height="28" alt="Nova Esports"></div>
+                    <span>Nova Esports</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-cs2.svg" class="game-logo-sm" alt="CS2"> Spring Cup SF
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">11 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Apex Wolves</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-apexwolves.svg" width="28" height="28" alt="Apex Wolves"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">20</span><span class="score-sep">–</span><span class="score-b">12</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-stormgg.svg" width="28" height="28" alt="Storm GG"></div>
+                    <span>Storm GG</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-lol.svg" class="game-logo-sm" alt="LoL"> Süper Lig
+                  </div>
+                  <div class="match-format" role="cell">BO1</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">11 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Dark Matter</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-darkmatter.svg" width="28" height="28" alt="Dark Matter"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">2</span><span class="score-sep">–</span><span class="score-b">1</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-phantom5.svg" width="28" height="28" alt="Phantom 5"></div>
+                    <span>Phantom 5</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-cs2.svg" class="game-logo-sm" alt="CS2"> Spring Cup SF
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-date-divider" role="rowgroup">10 Mayıs 2026</div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">10 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Iron Forge</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-ironforge.svg" width="28" height="28" alt="Iron Forge"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">2</span><span class="score-sep">–</span><span class="score-b">1</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-phantom5.svg" width="28" height="28" alt="Phantom 5"></div>
+                    <span>Phantom 5</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-valorant.svg" class="game-logo-sm" alt="VALORANT"> Haftalık
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">10 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Desert Vipers</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-desertviper.svg" width="28" height="28" alt="Desert Vipers"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">2</span><span class="score-sep">–</span><span class="score-b">2</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-cybernova.svg" width="28" height="28" alt="CyberNova"></div>
+                    <span>CyberNova</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-pubg.svg" class="game-logo-sm" alt="PUBG"> Nations Cup
+                  </div>
+                  <div class="match-format" role="cell">TPP</div>
+                </div>
+
+                <div class="match-date-divider" role="rowgroup">9 Mayıs 2026</div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">9 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Nova Esports</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-nova.svg" width="28" height="28" alt="Nova Esports"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">2</span><span class="score-sep">–</span><span class="score-b">0</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-apexwolves.svg" width="28" height="28" alt="Apex Wolves"></div>
+                    <span>Apex Wolves</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-dota2.svg" class="game-logo-sm" alt="Dota 2"> Invitational
+                  </div>
+                  <div class="match-format" role="cell">BO3</div>
+                </div>
+
+                <div class="match-row" role="row">
+                  <div class="match-time" role="cell" style="font-size:var(--text-xs); color:var(--clr-text-dim);">9 May</div>
+                  <div class="match-team match-team-a" role="cell">
+                    <span style="color:var(--clr-win);">Storm GG</span>
+                    <div class="team-logo-badge"><img src="img/logo-team-stormgg.svg" width="28" height="28" alt="Storm GG"></div>
+                  </div>
+                  <div class="match-score-col" role="cell">
+                    <span class="score-a">13</span><span class="score-sep">–</span><span class="score-b">7</span>
+                  </div>
+                  <div class="match-team match-team-b" role="cell">
+                    <div class="team-logo-badge"><img src="img/logo-team-horizonrush.svg" width="28" height="28" alt="Horizon Rush"></div>
+                    <span>Horizon Rush</span>
+                  </div>
+                  <div class="match-event" role="cell">
+                    <img src="img/logo-game-lol.svg" class="game-logo-sm" alt="LoL"> Süper Lig
+                  </div>
+                  <div class="match-format" role="cell">BO1</div>
+                </div>
+
+              </div>
+            </section>
+
+          </div><!-- /main-col -->
+
+          <!-- ======== SIDEBAR ======== -->
+          <aside class="sidebar-col" aria-label="Yan içerik">
+
+            <!-- Geri Sayım -->
+            <div class="sidebar-widget" aria-labelledby="cdTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="cdTitle">⏳ Spring Cup Final'e</span>
+              </div>
+              <div id="countdown" class="countdown-widget" aria-label="Spring Cup Final geri sayımı">
+                <div class="cd-box"><div class="cd-num" data-unit="days">--</div><div class="cd-label">Gün</div></div>
+                <div class="cd-box"><div class="cd-num" data-unit="hours">--</div><div class="cd-label">Saat</div></div>
+                <div class="cd-box"><div class="cd-num" data-unit="mins">--</div><div class="cd-label">Dk</div></div>
+                <div class="cd-box"><div class="cd-num" data-unit="secs">--</div><div class="cd-label">Sn</div></div>
+              </div>
+            </div>
+
+            <!-- TR CS2 Sıralaması -->
+            <div class="sidebar-widget" aria-labelledby="rankTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="rankTitle">🏅 TR CS2 Sıralaması</span>
+              </div>
+              <div class="ranking-list" role="list">
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos top3">#1</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Team Aurora</span>
+                  <span class="rank-change up" aria-label="Yükseldi">↑</span>
+                  <span class="rank-points">850 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos top3">#2</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Dark Matter</span>
+                  <span class="rank-change same" aria-label="Aynı">–</span>
+                  <span class="rank-points">790 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos top3">#3</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Nova Esports</span>
+                  <span class="rank-change down" aria-label="Düştü">↓</span>
+                  <span class="rank-points">720 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos">#4</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Storm GG</span>
+                  <span class="rank-change up">↑</span>
+                  <span class="rank-points">665 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos">#5</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Phantom 5</span>
+                  <span class="rank-change same">–</span>
+                  <span class="rank-points">610 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos">#6</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Iron Forge</span>
+                  <span class="rank-change up">↑</span>
+                  <span class="rank-points">580 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos">#7</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">Apex Wolves</span>
+                  <span class="rank-change down">↓</span>
+                  <span class="rank-points">540 puan</span>
+                </div>
+                <div class="ranking-row" role="listitem">
+                  <span class="rank-pos">#8</span>
+                  <span class="rank-flag">🇹🇷</span>
+                  <span class="rank-team">CyberNova</span>
+                  <span class="rank-change same">–</span>
+                  <span class="rank-points">495 puan</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Yaklaşan Etkinlikler -->
+            <div class="sidebar-widget" aria-labelledby="eventsTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="eventsTitle">📅 Yaklaşan Etkinlikler</span>
+              </div>
+              <div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">30</div>
+                    <div class="event-month">May</div>
+                  </div>
+                  <div>
+                    <div class="event-name">Nexus CS2 Spring Cup Final</div>
+                    <div class="event-prize">₺250.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-cs2">CS2</span></div>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">01</div>
+                    <div class="event-month">Haz</div>
+                  </div>
+                  <div>
+                    <div class="event-name">VCT Türkiye Open Series</div>
+                    <div class="event-prize">₺180.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-val">VALORANT</span></div>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date-box">
+                    <div class="event-day">20</div>
+                    <div class="event-month">Haz</div>
+                  </div>
+                  <div>
+                    <div class="event-name">Dota 2 Invitational</div>
+                    <div class="event-prize">₺120.000 Ödül Havuzu</div>
+                    <div class="event-game-tag"><span class="tag tag-dota">Dota 2</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hakkımızda mini -->
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <span class="widget-title">⚡ Nexus Esports</span>
+              </div>
+              <div style="padding: var(--space-md);">
+                <p style="font-size:var(--text-xs); color:var(--clr-text-muted); line-height:1.7; margin-bottom:var(--space-sm);">
+                  Türkiye'nin lider espor turnuva platformu. 120+ turnuva, 45K+ oyuncu ve ₺8M+ ödül havuzu.
+                </p>
+                <a href="hakkimda.html" class="btn btn-ghost btn-sm" style="width:100%; justify-content:center;">Hakkımızda →</a>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- /content-grid -->
+      </div><!-- /container -->
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex; margin-bottom:var(--space-sm);">
+            <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+            <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+          </a>
+          <p>Türkiye'nin lider espor turnuva ve haber platformu. Rekabeti bir üst seviyeye taşıyoruz.</p>
+          <div class="footer-social" aria-label="Sosyal medya">
+            <a href="https://x.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+            <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://discord.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Discord">💬</a>
+            <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+            <a href="https://twitch.tv" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitch">🎮</a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Platform linkleri">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"           class="footer-link">Ana Sayfa</a></li>
+            <li><a href="haberler.html"         class="footer-link">Haberler</a></li>
+            <li><a href="maclar.html"           class="footer-link">Maçlar</a></li>
+            <li><a href="maclar.html#sonuclar"  class="footer-link">Sonuçlar</a></li>
+            <li><a href="index.html#galeri"     class="footer-link">Galeri</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Oyun Dalları</h4>
+          <ul class="footer-links">
+            <li><a href="haberler.html" class="footer-link">Counter-Strike 2</a></li>
+            <li><a href="haberler.html" class="footer-link">VALORANT</a></li>
+            <li><a href="haberler.html" class="footer-link">League of Legends</a></li>
+            <li><a href="haberler.html" class="footer-link">Dota 2</a></li>
+            <li><a href="haberler.html" class="footer-link">PUBG Mobile</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kurumsal</h4>
+          <ul class="footer-links">
+            <li><a href="hakkimda.html" class="footer-link">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="footer-link">İletişim</a></li>
+            <li><a href="iletisim.html" class="footer-link">Sponsorluk</a></li>
+            <li><a href="iletisim.html" class="footer-link">Kariyer</a></li>
+            <li><a href="iletisim.html" class="footer-link">KVKK</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>Nexus Esports</span>. Tüm hakları saklıdır.</p>
+        <a href="admin.html" style="font-size:0.65rem; color: var(--clr-text-dim); text-decoration:none; opacity:0.4; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.4">⚙ Admin</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Yukarı git butonu -->
+  <button id="scrollToTop" aria-label="Sayfanın başına git" title="Yukarı Çık">↑</button>
+
+  <!-- Arama Overlay -->
+  <div id="searchOverlay" role="dialog" aria-modal="true" aria-label="Site geneli arama">
+    <div class="search-box">
+      <button id="searchClose" aria-label="Aramayı kapat">×</button>
+      <input id="searchInput" type="search" placeholder="Haberlerde ara… (CS2, VALORANT, LoL…)" autocomplete="off" spellcheck="false" />
+      <div id="searchResults" role="listbox" aria-label="Arama sonuçları"></div>
+      <p class="search-hint">ESC ile kapat · Ctrl+K ile aç</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

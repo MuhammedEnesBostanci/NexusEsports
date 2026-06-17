@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nexus Esports ile iletişime geçin – turnuva kayıt, sponsorluk veya teknik destek için." />
+  <title>İletişim – Nexus Esports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVİGASYON ==================== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Ana Navigasyon">
+      <div class="container nav-inner">
+
+        <a href="index.html" class="nav-logo" aria-label="Nexus Esports Ana Sayfa">
+          <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+          <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="index.html"            class="nav-link">Ana Sayfa</a></li>
+          <li><a href="haberler.html"   class="nav-link">Haberler</a></li>
+          <li><a href="maclar.html"     class="nav-link">Maçlar <span class="nav-live-badge">CANLI</span></a></li>
+          <li><a href="maclar.html#sonuclar"   class="nav-link">Sonuçlar</a></li>
+          <li><a href="index.html#galeri"     class="nav-link">Galeri</a></li>
+          <li><a href="hakkimda.html"         class="nav-link">Hakkımızda</a></li>
+          <li><a href="iletisim.html"         class="nav-link active" aria-current="page">İletişim</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-search-btn" data-search-open aria-label="Ara (Ctrl+K)" title="Haberlerde ara">&#128269;</button>
+          <a href="iletisim.html" class="btn btn-primary btn-sm">Kayıt Ol</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç/kapat">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== SAYFA HERO ==================== -->
+  <div class="page-hero" role="banner">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <div class="breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">İletişim</span>
+        </div>
+      </nav>
+      <div class="page-hero-inner">
+        <h1>İleti<span>şim</span></h1>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-wrapper">
+      <div class="container">
+
+        <!-- CSS Grid: İçerik + Sidebar -->
+        <div class="content-grid">
+
+          <!-- ======== ANA İÇERİK ======== -->
+          <div class="main-col">
+
+            <!-- İletişim Grid: bilgiler + form -->
+            <section aria-labelledby="contactTitle">
+              <div class="section-title-bar">
+                <h2 id="contactTitle">Bize <span class="accent">Yazın</span></h2>
+              </div>
+
+              <!-- CSS Grid: bilgi + form iki kolon -->
+              <div class="contact-grid">
+
+                <!-- Sol: İletişim Bilgileri - Flexbox -->
+                <div>
+                  <p style="font-size: var(--text-sm); color: var(--clr-text-muted); line-height: 1.8; margin-bottom: var(--space-md);">
+                    Turnuva kayıtları, teknik destek, sponsorluk iş birlikleri veya genel sorularınız için aşağıdaki kanallardan bize ulaşabilirsiniz.
+                    <br /><br />
+                    Hafta içi <strong style="color: var(--clr-text);">09:00–18:00</strong> saatleri arasında yanıt veriyoruz.
+                  </p>
+
+                  <div class="contact-info-list">
+
+                    <div class="contact-item">
+                      <div class="contact-icon" aria-hidden="true">📧</div>
+                      <div class="contact-detail">
+                        <strong>E-Posta</strong>
+                        <span><a href="mailto:info@nexusesports.com.tr" style="color: var(--clr-primary);">info@nexusesports.com.tr</a></span>
+                      </div>
+                    </div>
+
+                    <div class="contact-item">
+                      <div class="contact-icon" aria-hidden="true">📞</div>
+                      <div class="contact-detail">
+                        <strong>Telefon</strong>
+                        <span><a href="tel:+902121234567" style="color: var(--clr-primary);">+90 212 123 45 67</a></span>
+                      </div>
+                    </div>
+
+                    <div class="contact-item">
+                      <div class="contact-icon" aria-hidden="true">📍</div>
+                      <div class="contact-detail">
+                        <strong>Adres</strong>
+                        <span>Levent Mah. Büyükdere Cad. No: 201, Şişli / İstanbul</span>
+                      </div>
+                    </div>
+
+                    <div class="contact-item">
+                      <div class="contact-icon" aria-hidden="true">🕘</div>
+                      <div class="contact-detail">
+                        <strong>Çalışma Saatleri</strong>
+                        <span>Pazartesi – Cuma: 09:00 – 18:00</span>
+                      </div>
+                    </div>
+
+                    <div class="contact-item">
+                      <div class="contact-icon" aria-hidden="true">💬</div>
+                      <div class="contact-detail">
+                        <strong>Discord</strong>
+                        <span>discord.gg/nexus-esports</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Sosyal medya -->
+                  <div style="margin-top: var(--space-lg);">
+                    <p style="font-family: var(--font-heading); font-size: var(--text-xs); letter-spacing: 2px; text-transform: uppercase; color: var(--clr-text-muted); margin-bottom: var(--space-sm);">
+                      Sosyal Medya
+                    </p>
+                    <div class="footer-social">
+                      <a href="https://x.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+                      <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+                      <a href="https://discord.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Discord">💬</a>
+                      <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+                      <a href="https://twitch.tv" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitch">🎮</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sağ: Form Kartı -->
+                <div class="form-card">
+                  <div class="form-card-header">
+                    <h3>Mesaj Gönder</h3>
+                  </div>
+                  <div class="form-body">
+
+                    <form action="#" method="post" novalidate aria-label="İletişim formu" id="contactForm">
+
+                      <!-- CSS Grid: 2 sütun ad/soyad -->
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="firstName" class="form-label">Ad <span class="req" aria-hidden="true">*</span></label>
+                          <input type="text" id="firstName" name="firstName" class="form-input"
+                            placeholder="Adınız" required autocomplete="given-name" aria-required="true" />
+                        </div>
+                        <div class="form-group">
+                          <label for="lastName" class="form-label">Soyad <span class="req" aria-hidden="true">*</span></label>
+                          <input type="text" id="lastName" name="lastName" class="form-input"
+                            placeholder="Soyadınız" required autocomplete="family-name" aria-required="true" />
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="email" class="form-label">E-Posta <span class="req" aria-hidden="true">*</span></label>
+                          <input type="email" id="email" name="email" class="form-input"
+                            placeholder="ornek@email.com" required autocomplete="email" aria-required="true" />
+                        </div>
+                        <div class="form-group">
+                          <label for="phone" class="form-label">Telefon</label>
+                          <input type="tel" id="phone" name="phone" class="form-input"
+                            placeholder="+90 5XX XXX XX XX" autocomplete="tel" />
+                        </div>
+                      </div>
+
+                      <div class="form-group" style="margin-bottom: var(--space-sm);">
+                        <label for="subject" class="form-label">Konu <span class="req" aria-hidden="true">*</span></label>
+                        <select id="subject" name="subject" class="form-select" required aria-required="true">
+                          <option value="" disabled selected>Konu seçiniz</option>
+                          <option value="turnuva">Turnuva Kaydı</option>
+                          <option value="sponsor">Sponsorluk Teklifi</option>
+                          <option value="takim">Takım Başvurusu</option>
+                          <option value="teknik">Teknik Destek</option>
+                          <option value="basin">Basın ve Medya</option>
+                          <option value="diger">Diğer</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group" style="margin-bottom: var(--space-sm);">
+                        <label for="game" class="form-label">Oyun Dalı</label>
+                        <select id="game" name="game" class="form-select">
+                          <option value="" disabled selected>Oyun seçiniz (opsiyonel)</option>
+                          <option value="cs2">Counter-Strike 2</option>
+                          <option value="valorant">VALORANT</option>
+                          <option value="lol">League of Legends</option>
+                          <option value="dota2">Dota 2</option>
+                          <option value="pubg">PUBG Mobile</option>
+                          <option value="fortnite">Fortnite</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group" style="margin-bottom: var(--space-sm);">
+                        <label for="message" class="form-label">Mesaj <span class="req" aria-hidden="true">*</span></label>
+                        <textarea id="message" name="message" class="form-textarea"
+                          placeholder="Mesajınızı buraya yazınız..."
+                          required aria-required="true" rows="5"></textarea>
+                      </div>
+
+                      <!-- KVKK onay -->
+                      <div class="form-checkbox-row">
+                        <input type="checkbox" id="kvkk" name="kvkk" required aria-required="true" />
+                        <label for="kvkk">
+                          <a href="#">Kişisel Verilerin Korunması</a> (KVKK) metnini okudum ve verilerimin işlenmesine onay veriyorum.
+                          <span class="req" aria-hidden="true"> *</span>
+                        </label>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary" id="submitBtn"
+                        style="width: 100%; justify-content: center; padding: 0.75rem;">
+                        Mesajı Gönder ✉️
+                      </button>
+
+                    </form>
+
+                  </div>
+                </div><!-- /form-card -->
+
+              </div><!-- /contact-grid -->
+            </section>
+
+            <!-- SSS Bölümü -->
+            <section style="margin-top: var(--space-2xl);" aria-labelledby="faqTitle">
+              <div class="section-title-bar">
+                <h2 id="faqTitle">Sık Sorulan <span class="accent">Sorular</span></h2>
+              </div>
+
+              <!-- CSS Grid: SSS kartları -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-sm);">
+
+                <div class="value-card reveal" aria-label="Turnuvaya nasıl katılabilirim?">
+                  <div class="value-icon" aria-hidden="true">❓</div>
+                  <div>
+                    <div class="value-title">Nasıl Katılırım?</div>
+                    <p class="value-desc">Siteye kayıt olun, aktif turnuvayı seçin ve "Kayıt Ol" butonuna basın. Onay e-postası gelecektir.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Katılım ücreti var mı?">
+                  <div class="value-icon" aria-hidden="true">💰</div>
+                  <div>
+                    <div class="value-title">Ücret Var mı?</div>
+                    <p class="value-desc">Amatör turnuvalar tamamen ücretsizdir. Bazı profesyonel liglerde sembolik kayıt ücreti olabilir.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Ödüller nasıl ödeniyor?">
+                  <div class="value-icon" aria-hidden="true">🏆</div>
+                  <div>
+                    <div class="value-title">Ödüller Nasıl Ödenir?</div>
+                    <p class="value-desc">Turnuva bitiminden 15 iş günü içinde kayıtlı banka hesabınıza havale yapılır.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Takım kurmak için ne lazım?">
+                  <div class="value-icon" aria-hidden="true">👥</div>
+                  <div>
+                    <div class="value-title">Takım Kurmak</div>
+                    <p class="value-desc">Platform üzerinden "Takım Oluştur" ile takımınızı kurun, diğer oyuncuları davet edin.</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+          </div><!-- /main-col -->
+
+          <!-- ======== SIDEBAR ======== -->
+          <aside class="sidebar-col" aria-label="Yan içerik">
+
+            <!-- Hızlı Bağlantılar -->
+            <div class="sidebar-widget" aria-labelledby="quickLinksTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="quickLinksTitle">🔗 Hızlı Bağlantılar</span>
+              </div>
+              <div class="ranking-list">
+                <a href="index.html" class="ranking-row" style="cursor:pointer; text-decoration:none;">
+                  <span style="font-size:0.9rem;" aria-hidden="true">🏠</span>
+                  <span class="rank-team">Ana Sayfa</span>
+                </a>
+                <a href="index.html#maclar" class="ranking-row" style="cursor:pointer; text-decoration:none;">
+                  <span style="font-size:0.9rem;" aria-hidden="true">⚔️</span>
+                  <span class="rank-team">Yaklaşan Maçlar</span>
+                </a>
+                <a href="index.html#sonuclar" class="ranking-row" style="cursor:pointer; text-decoration:none;">
+                  <span style="font-size:0.9rem;" aria-hidden="true">📊</span>
+                  <span class="rank-team">Maç Sonuçları</span>
+                </a>
+                <a href="index.html#galeri" class="ranking-row" style="cursor:pointer; text-decoration:none;">
+                  <span style="font-size:0.9rem;" aria-hidden="true">🖼️</span>
+                  <span class="rank-team">Galeri</span>
+                </a>
+                <a href="hakkimda.html" class="ranking-row" style="cursor:pointer; text-decoration:none;">
+                  <span style="font-size:0.9rem;" aria-hidden="true">ℹ️</span>
+                  <span class="rank-team">Hakkımızda</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- İletişim Bilgileri Özeti -->
+            <div class="sidebar-widget" aria-labelledby="contactSummaryTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="contactSummaryTitle">📬 İletişim Bilgileri</span>
+              </div>
+              <div class="ranking-list">
+                <div class="ranking-row" style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+                  <span style="font-size: var(--text-2xs); color: var(--clr-text-dim); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading);">E-Posta</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-primary);">info@nexusesports.com.tr</span>
+                </div>
+                <div class="ranking-row" style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+                  <span style="font-size: var(--text-2xs); color: var(--clr-text-dim); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading);">Telefon</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-primary);">+90 212 123 45 67</span>
+                </div>
+                <div class="ranking-row" style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+                  <span style="font-size: var(--text-2xs); color: var(--clr-text-dim); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading);">Çalışma Saatleri</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Pzt–Cum 09:00–18:00</span>
+                </div>
+                <div class="ranking-row" style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+                  <span style="font-size: var(--text-2xs); color: var(--clr-text-dim); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading);">Yanıt Süresi</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Ortalama 2–4 saat</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sosyal Medya -->
+            <div class="sidebar-widget" aria-labelledby="socialWidgetTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="socialWidgetTitle">📱 Sosyal Medya</span>
+              </div>
+              <div style="padding: var(--space-sm) var(--space-md); display: flex; flex-direction: column; gap: var(--space-xs);">
+                <a href="#" class="ranking-row" style="text-decoration:none; gap: var(--space-sm);">
+                  <span aria-hidden="true">𝕏</span>
+                  <span class="rank-team">@NexusEsports</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-dim);">42K</span>
+                </a>
+                <a href="#" class="ranking-row" style="text-decoration:none; gap: var(--space-sm);">
+                  <span aria-hidden="true">📷</span>
+                  <span class="rank-team">nexus.esports</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-dim);">28K</span>
+                </a>
+                <a href="#" class="ranking-row" style="text-decoration:none; gap: var(--space-sm);">
+                  <span aria-hidden="true">💬</span>
+                  <span class="rank-team">Discord Server</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-live);">12K üye</span>
+                </a>
+                <a href="#" class="ranking-row" style="text-decoration:none; gap: var(--space-sm);">
+                  <span aria-hidden="true">▶</span>
+                  <span class="rank-team">Nexus Esports TR</span>
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-dim);">65K</span>
+                </a>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- /content-grid -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display: inline-flex; margin-bottom: var(--space-sm);">
+            <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+            <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+          </a>
+          <p>Türkiye'nin lider espor turnuva ve haber platformu.</p>
+          <div class="footer-social" aria-label="Sosyal medya">
+            <a href="https://x.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+            <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://discord.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Discord">💬</a>
+            <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+            <a href="https://twitch.tv" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitch">🎮</a>
+          </div>
+        </div>
+        <nav class="footer-col" aria-label="Platform linkleri">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+            <li><a href="haberler.html" class="footer-link">Haberler</a></li>
+            <li><a href="maclar.html" class="footer-link">Maçlar</a></li>
+            <li><a href="maclar.html#sonuclar" class="footer-link">Sonuçlar</a></li>
+            <li><a href="index.html#galeri" class="footer-link">Galeri</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h4>Oyun Dalları</h4>
+          <ul class="footer-links">
+            <li><a href="haberler.html" class="footer-link">Counter-Strike 2</a></li>
+            <li><a href="haberler.html" class="footer-link">VALORANT</a></li>
+            <li><a href="haberler.html" class="footer-link">League of Legends</a></li>
+            <li><a href="haberler.html" class="footer-link">Dota 2</a></li>
+            <li><a href="haberler.html" class="footer-link">PUBG Mobile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kurumsal</h4>
+          <ul class="footer-links">
+            <li><a href="hakkimda.html" class="footer-link">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="footer-link">İletişim</a></li>
+            <li><a href="iletisim.html" class="footer-link">Sponsorluk</a></li>
+            <li><a href="iletisim.html" class="footer-link">Kariyer</a></li>
+            <li><a href="iletisim.html" class="footer-link">KVKK</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>Nexus Esports</span>. Tüm hakları saklıdır.</p>
+        <a href="admin.html" style="font-size:0.65rem; color: var(--clr-text-dim); text-decoration:none; opacity:0.4; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.4">⚙ Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

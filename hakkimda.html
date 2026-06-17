@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nexus Esports hakkında – Türkiye'nin lider espor platformunun hikayesi, misyon, vizyon ve ekip." />
+  <title>Hakkımızda – Nexus Esports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVİGASYON ==================== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Ana Navigasyon">
+      <div class="container nav-inner">
+
+        <a href="index.html" class="nav-logo" aria-label="Nexus Esports Ana Sayfa">
+          <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+          <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="index.html"            class="nav-link">Ana Sayfa</a></li>
+          <li><a href="haberler.html"   class="nav-link">Haberler</a></li>
+          <li><a href="maclar.html"     class="nav-link">Maçlar <span class="nav-live-badge">CANLI</span></a></li>
+          <li><a href="maclar.html#sonuclar"   class="nav-link">Sonuçlar</a></li>
+          <li><a href="index.html#galeri"     class="nav-link">Galeri</a></li>
+          <li><a href="hakkimda.html"         class="nav-link active" aria-current="page">Hakkımızda</a></li>
+          <li><a href="iletisim.html"         class="nav-link">İletişim</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-search-btn" data-search-open aria-label="Ara (Ctrl+K)" title="Haberlerde ara">&#128269;</button>
+          <a href="iletisim.html" class="btn btn-primary btn-sm">Kayıt Ol</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menüyü aç/kapat">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== SAYFA HERO ==================== -->
+  <div class="page-hero" role="banner">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <div class="breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Hakkımızda</span>
+        </div>
+      </nav>
+      <div class="page-hero-inner">
+        <h1>Hakkı<span>mızda</span></h1>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-wrapper">
+      <div class="container">
+
+        <!-- CSS Grid: İçerik + Sidebar -->
+        <div class="content-grid">
+
+          <!-- ======== ANA İÇERİK ======== -->
+          <div class="main-col">
+
+            <!-- Hakkımızda içeriği - Flexbox iki sütun -->
+            <section class="about-section" aria-labelledby="aboutTitle">
+              <div class="section-title-bar">
+                <h2 id="aboutTitle">Biz <span class="accent">Kimiz?</span></h2>
+              </div>
+
+              <div class="about-flex">
+
+                <div class="about-visual">
+                  <div class="about-image-box" aria-hidden="true">
+                    <img src="img/banner-nexus.svg" alt="Nexus Esports"
+                      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit;" />
+                  </div>
+                </div>
+
+                <div class="about-text">
+                  <p>
+                    <strong style="color: var(--clr-text);">Nexus Esports</strong>, 2019 yılında İstanbul'da kurulan ve Türkiye'nin en büyük espor organizasyon platformuna dönüşen bir girişimdir. Kuruluşundan bu yana 120'yi aşkın turnuva düzenlemiş, 45.000'den fazla oyuncuya rekabetçi bir ortam sunmuş ve toplamda 8 milyon TL'nin üzerinde ödül dağıtmıştır.
+                  </p>
+                  <p>
+                    CS2, VALORANT, League of Legends, Dota 2, PUBG Mobile ve Fortnite olmak üzere 6 farklı oyun dalında hem amatör hem profesyonel düzeyde turnuvalar organize ediyoruz. Amacımız; Türk espor ekosistemini geliştirmek, yetenekli oyuncuları ön plana çıkarmak ve esporu sosyal bir değer olarak konumlandırmak.
+                  </p>
+                  <p>
+                    İstanbul'daki 800 m² <strong style="color: var(--clr-primary);">Nexus Arena</strong> tesisimizden canlı yayınlanan etkinliklerimiz her yıl milyonlarca izleyiciye ulaşmaktadır. Tüm büyük espor dernekleri ve federasyonlarıyla iş birliği içinde çalışıyoruz.
+                  </p>
+                  <div style="margin-top: var(--space-md);">
+                    <a href="iletisim.html" class="btn btn-primary">Bize Ulaşın</a>
+                    &nbsp;
+                    <a href="maclar.html" class="btn btn-ghost">Maçları İzle</a>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- İstatistikler - CSS Grid -->
+            <section aria-labelledby="statsTitle" style="margin-bottom: var(--space-xl);">
+              <div class="section-title-bar">
+                <h2 id="statsTitle">Rakamlarla <span class="accent">Nexus</span></h2>
+              </div>
+              <div class="stats-grid" role="list" aria-label="Platform istatistikleri">
+                <div class="stat-box reveal" role="listitem">
+                  <div class="stat-value" data-counter="120" data-suffix="+">120+</div>
+                  <div class="stat-label">Düzenlenen Turnuva</div>
+                </div>
+                <div class="stat-box reveal" role="listitem">
+                  <div class="stat-value" data-counter="45000">45K</div>
+                  <div class="stat-label">Kayıtlı Oyuncu</div>
+                </div>
+                <div class="stat-box reveal" role="listitem">
+                  <div class="stat-value" data-counter="8" data-prefix="₺" data-suffix="M">₺8M</div>
+                  <div class="stat-label">Toplam Ödül</div>
+                </div>
+                <div class="stat-box reveal" role="listitem">
+                  <div class="stat-value" data-counter="6">6</div>
+                  <div class="stat-label">Oyun Dalı</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Misyon & Vizyon + Değerler - CSS Grid -->
+            <section aria-labelledby="valuesTitle" style="margin-bottom: var(--space-xl);">
+              <div class="section-title-bar">
+                <h2 id="valuesTitle">Misyon, Vizyon & <span class="accent">Değerlerimiz</span></h2>
+              </div>
+
+              <div class="values-grid">
+
+                <div class="value-card reveal" aria-label="Misyonumuz">
+                  <div class="value-icon" aria-hidden="true">🎯</div>
+                  <div>
+                    <div class="value-title">Misyonumuz</div>
+                    <p class="value-desc">Türkiye'deki her oyuncuya eşit rekabet fırsatı sunmak, esporu toplumsal bir değer olarak konumlandırmak ve genç yeteneklerin dünya sahnesine taşınmasına köprü olmak.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Vizyonumuz">
+                  <div class="value-icon" aria-hidden="true">🚀</div>
+                  <div>
+                    <div class="value-title">Vizyonumuz</div>
+                    <p class="value-desc">2030 yılına kadar Orta Doğu ve Doğu Avrupa'nın en büyük espor organizasyon platformu olmak. Yılda 500+ turnuva, 200.000 aktif oyuncu.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Dürüstlük">
+                  <div class="value-icon" aria-hidden="true">🤝</div>
+                  <div>
+                    <div class="value-title">Dürüstlük</div>
+                    <p class="value-desc">Her turnuvada adil oyun, şeffaf kurallar ve tarafsız hakem kararları. Rekabetçi bütünlük bizim için her şeyden önce gelir.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="İnovasyon">
+                  <div class="value-icon" aria-hidden="true">💡</div>
+                  <div>
+                    <div class="value-title">İnovasyon</div>
+                    <p class="value-desc">Teknoloji ile espor deneyimini sürekli geliştiriyoruz. Canlı yayın altyapısı, gerçek zamanlı istatistik ve veri analitiği.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Topluluk">
+                  <div class="value-icon" aria-hidden="true">🌐</div>
+                  <div>
+                    <div class="value-title">Topluluk</div>
+                    <p class="value-desc">Oyuncuları, takımları ve taraftarları bir araya getiren güçlü bir ekosistem. 45.000+ kişilik aktif topluluğumuzla büyüyoruz.</p>
+                  </div>
+                </div>
+
+                <div class="value-card reveal" aria-label="Mükemmellik">
+                  <div class="value-icon" aria-hidden="true">🏆</div>
+                  <div>
+                    <div class="value-title">Mükemmellik</div>
+                    <p class="value-desc">Organizasyon, yayın kalitesi ve oyuncu deneyiminde en yüksek standartları hedefliyoruz. İkincilere yer yok.</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- Ekibimiz - CSS Grid -->
+            <section aria-labelledby="teamTitle">
+              <div class="section-title-bar">
+                <h2 id="teamTitle">Ekibi<span class="accent">miz</span></h2>
+              </div>
+
+              <div class="team-grid">
+
+                <!-- Genel Müdür - Öne Çıkan Kart -->
+                <article class="team-card team-card--ceo reveal" aria-label="Enes Bostancı - Genel Müdür" style="grid-column: 1 / -1; display:flex; flex-direction:row; align-items:center; gap: var(--space-xl); background: linear-gradient(135deg, var(--clr-card), rgba(245,163,26,0.06)); border-color: rgba(245,163,26,0.3);">
+                  <div class="team-avatar orange" aria-hidden="true" style="width:90px; height:90px; flex-shrink:0; overflow:hidden; padding:0;">
+                    <img src="img/team-enes.jpg" alt="Enes Bostancı"
+                         style="width:100%; height:100%; object-fit:cover; object-position:center top; border-radius:50%;"
+                         onerror="this.style.display='none'; this.parentElement.textContent='E';" />
+                  </div>
+                  <div class="team-info" style="text-align:left;">
+                    <div style="display:flex; align-items:center; gap:var(--space-sm); flex-wrap:wrap;">
+                      <div class="team-name" style="font-size: var(--text-xl);">Enes Bostancı</div>
+                      <span class="tag tag-live" style="font-size:0.6rem; padding:0.15rem 0.5rem; letter-spacing:1px;">GENEL MÜDÜR</span>
+                    </div>
+                    <div class="team-role" style="color:var(--clr-primary); margin-bottom:var(--space-xs);">Kurucu &amp; Genel Müdür</div>
+                    <p class="team-bio" style="max-width:480px;">Nexus Esports'un kurucusu ve vizyonu. Platformun stratejik yönünü, ortaklık politikalarını ve büyüme hedeflerini belirler. Türk espor ekosistemini uluslararası arenaya taşıma misyonunun mimarı.</p>
+                  </div>
+                </article>
+
+                <article class="team-card reveal" aria-label="Ahmet Çakıcı - Operasyon Direktörü">
+                  <div class="team-avatar blue" aria-hidden="true" style="overflow:hidden; padding:0;">
+                    <img src="img/team-ahmet.jpg" alt="Ahmet Çakıcı"
+                         style="width:100%; height:100%; object-fit:cover; object-position:center top; border-radius:50%;"
+                         onerror="this.style.display='none'; this.parentElement.textContent='A';" />
+                  </div>
+                  <div class="team-info">
+                    <div class="team-name">Ahmet Çakıcı</div>
+                    <div class="team-role">Operasyon Direktörü</div>
+                    <p class="team-bio">Turnuva lojistiği, arena yönetimi ve saha operasyonlarının koordinasyonu. 50+ etkinliğin sorunsuz yürütülmesinden sorumlu.</p>
+                  </div>
+                </article>
+
+                <article class="team-card reveal" aria-label="Emir Subaşı - Teknik Direktör">
+                  <div class="team-avatar red" aria-hidden="true" style="overflow:hidden; padding:0;">
+                    <img src="img/team-emir.jpg" alt="Emir Subaşı"
+                         style="width:100%; height:100%; object-fit:cover; object-position:center top; border-radius:50%;"
+                         onerror="this.style.display='none'; this.parentElement.textContent='E';" />
+                  </div>
+                  <div class="team-info">
+                    <div class="team-name">Emir Subaşı</div>
+                    <div class="team-role">Teknik &amp; Yazılım Direktörü</div>
+                    <p class="team-bio">Platform altyapısı, canlı yayın sistemleri ve veri analitiği. Nexus'un teknik gücünün arkasındaki isim.</p>
+                  </div>
+                </article>
+
+              </div>
+            </section>
+
+          </div><!-- /main-col -->
+
+          <!-- ======== SIDEBAR ======== -->
+          <aside class="sidebar-col" aria-label="Yan içerik">
+
+            <!-- Hızlı İstatistik -->
+            <div class="sidebar-widget" aria-labelledby="quickStatsTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="quickStatsTitle">📊 Platform Özeti</span>
+              </div>
+              <div class="ranking-list">
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Kuruluş Yılı</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">2019</span>
+                </div>
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Toplam Turnuva</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">120+</span>
+                </div>
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Kayıtlı Oyuncu</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">45.000+</span>
+                </div>
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Toplam Ödül</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">₺8M+</span>
+                </div>
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Oyun Dalı</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">6</span>
+                </div>
+                <div class="ranking-row" style="justify-content: space-between;">
+                  <span style="font-size: var(--text-xs); color: var(--clr-text-muted);">Ekip Üyesi</span>
+                  <span style="font-family: var(--font-heading); color: var(--clr-primary); font-weight:700;">28</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desteklenen Oyunlar -->
+            <div class="sidebar-widget" aria-labelledby="gamesWidgetTitle">
+              <div class="widget-header">
+                <span class="widget-title" id="gamesWidgetTitle">🎮 Oyun Dalları</span>
+              </div>
+              <div class="ranking-list">
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">🎯</span>
+                  <span class="rank-team">Counter-Strike 2</span>
+                  <span class="tag tag-cs2">Aktif</span>
+                </div>
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">⚔️</span>
+                  <span class="rank-team">VALORANT</span>
+                  <span class="tag tag-val">Aktif</span>
+                </div>
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">⚜️</span>
+                  <span class="rank-team">League of Legends</span>
+                  <span class="tag tag-lol">Aktif</span>
+                </div>
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">🛡️</span>
+                  <span class="rank-team">Dota 2</span>
+                  <span class="tag tag-dota">Aktif</span>
+                </div>
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">🔫</span>
+                  <span class="rank-team">PUBG Mobile</span>
+                  <span class="tag tag-pubg">Aktif</span>
+                </div>
+                <div class="ranking-row">
+                  <span style="font-size:1rem;" aria-hidden="true">🌀</span>
+                  <span class="rank-team">Fortnite</span>
+                  <span class="tag tag-upcoming">Yeni</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- İletişime Git -->
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <span class="widget-title">📧 Sponsorluk</span>
+              </div>
+              <div style="padding: var(--space-md);">
+                <p style="font-size: var(--text-xs); color: var(--clr-text-muted); line-height: 1.7; margin-bottom: var(--space-sm);">
+                  Sponsorluk teklifleri ve iş birliği için bize ulaşın.
+                </p>
+                <a href="iletisim.html" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">
+                  İletişime Geç →
+                </a>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- /content-grid -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display: inline-flex; margin-bottom: var(--space-sm);">
+            <img src="img/logo-nexus.svg" class="logo-mark" alt="" aria-hidden="true" width="34" height="34" />
+            <span class="logo-name"><em>NEXUS</em><span class="logo-sub">ESPORTS</span></span>
+          </a>
+          <p>Türkiye'nin lider espor turnuva ve haber platformu.</p>
+          <div class="footer-social" aria-label="Sosyal medya">
+            <a href="https://x.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+            <a href="https://instagram.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://discord.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Discord">💬</a>
+            <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+            <a href="https://twitch.tv" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Twitch">🎮</a>
+          </div>
+        </div>
+        <nav class="footer-col" aria-label="Platform linkleri">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+            <li><a href="haberler.html" class="footer-link">Haberler</a></li>
+            <li><a href="maclar.html" class="footer-link">Maçlar</a></li>
+            <li><a href="maclar.html#sonuclar" class="footer-link">Sonuçlar</a></li>
+            <li><a href="index.html#galeri" class="footer-link">Galeri</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h4>Oyun Dalları</h4>
+          <ul class="footer-links">
+            <li><a href="haberler.html" class="footer-link">Counter-Strike 2</a></li>
+            <li><a href="haberler.html" class="footer-link">VALORANT</a></li>
+            <li><a href="haberler.html" class="footer-link">League of Legends</a></li>
+            <li><a href="haberler.html" class="footer-link">Dota 2</a></li>
+            <li><a href="haberler.html" class="footer-link">PUBG Mobile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kurumsal</h4>
+          <ul class="footer-links">
+            <li><a href="hakkimda.html" class="footer-link">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="footer-link">İletişim</a></li>
+            <li><a href="iletisim.html" class="footer-link">Sponsorluk</a></li>
+            <li><a href="iletisim.html" class="footer-link">Kariyer</a></li>
+            <li><a href="iletisim.html" class="footer-link">KVKK</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>Nexus Esports</span>. Tüm hakları saklıdır.</p>
+        <a href="admin.html" style="font-size:0.65rem; color: var(--clr-text-dim); text-decoration:none; opacity:0.4; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.4">⚙ Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
