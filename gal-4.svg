@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0e06"/>
+      <stop offset="100%" stop-color="#1e1a08"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c08010"/>
+      <stop offset="100%" stop-color="#f0b030"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Kamuflaj lekeleri -->
+  <ellipse cx="120" cy="130" rx="130" ry="90" fill="#181a08" opacity="0.6"/>
+  <ellipse cx="680" cy="310" rx="150" ry="100" fill="#181a08" opacity="0.6"/>
+  <ellipse cx="400" cy="70"  rx="110" ry="65" fill="#181a08" opacity="0.5"/>
+  <ellipse cx="190" cy="340" rx="110" ry="65" fill="#1c1e08" opacity="0.5"/>
+  <ellipse cx="630" cy="100" rx="90"  ry="55" fill="#1c1e08" opacity="0.4"/>
+
+  <!-- Radar çemberleri -->
+  <circle cx="400" cy="210" r="180" fill="none" stroke="#c08010" stroke-width="0.5" opacity="0.18"/>
+  <circle cx="400" cy="210" r="120" fill="none" stroke="#c08010" stroke-width="0.5" opacity="0.14"/>
+  <circle cx="400" cy="210" r="60"  fill="none" stroke="#f0b030" stroke-width="1" opacity="0.22"/>
+  <circle cx="400" cy="210" r="20"  fill="#f0b030" opacity="0.1"/>
+
+  <!-- Radar çizgileri -->
+  <line x1="220" y1="210" x2="580" y2="210" stroke="#c08010" stroke-width="0.5" opacity="0.18"/>
+  <line x1="400" y1="30"  x2="400" y2="390" stroke="#c08010" stroke-width="0.5" opacity="0.18"/>
+  <line x1="273" y1="83" x2="527" y2="337" stroke="#c08010" stroke-width="0.5" opacity="0.1"/>
+  <line x1="527" y1="83" x2="273" y2="337" stroke="#c08010" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Radar sweep -->
+  <polygon points="400,210 580,210 527,83" fill="#f0b030" opacity="0.04"/>
+
+  <!-- Konum işaretçileri -->
+  <circle cx="340" cy="170" r="5" fill="#f0b030" opacity="0.6"/>
+  <circle cx="480" cy="250" r="4" fill="#f0b030" opacity="0.5"/>
+  <circle cx="300" cy="280" r="5" fill="#c08010" opacity="0.5"/>
+  <circle cx="510" cy="160" r="4" fill="#c08010" opacity="0.4"/>
+
+  <!-- Nişangah merkezi -->
+  <g transform="translate(400,210)" stroke="#f0b030" stroke-width="2" fill="none" opacity="0.5" filter="url(#glow)">
+    <circle cx="0" cy="0" r="12"/>
+    <line x1="-22" y1="0" x2="-16" y2="0"/>
+    <line x1="16"  y1="0" x2="22" y2="0"/>
+    <line x1="0" y1="-22" x2="0" y2="-16"/>
+    <line x1="0" y1="16"  x2="0" y2="22"/>
+  </g>
+
+  <!-- Sol aksan -->
+  <rect x="0" y="0" width="4" height="450" fill="url(#amber)"/>
+
+  <!-- Zemin -->
+  <rect x="0" y="370" width="800" height="80" fill="#080a04"/>
+
+  <text x="400" y="402" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="22" font-weight="900" letter-spacing="4" opacity="0.95" filter="url(#glow)">PUBG MOBILE</text>
+  <rect x="260" y="412" width="280" height="2" rx="1" fill="url(#amber)" opacity="0.7"/>
+  <text x="400" y="434" text-anchor="middle" fill="#c08010" font-family="Arial,sans-serif"
+        font-size="11" letter-spacing="3" opacity="0.8">NATIONS CUP ŞAMPİYONLUK 2026</text>
+</svg>

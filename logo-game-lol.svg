@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#010306"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" fill="url(#bg)"/>
+  <rect x="0" y="36" width="40" height="4" fill="#c8aa6e"/>
+  <!-- Hexagonal shield outline -->
+  <polygon points="20,5 33,12 33,28 20,35 7,28 7,12" fill="none" stroke="#c8aa6e" stroke-width="2"/>
+  <!-- Inner filled hexagon (dimmed) -->
+  <polygon points="20,9 29,14.5 29,25.5 20,31 11,25.5 11,14.5" fill="#c8aa6e" opacity="0.1"/>
+  <!-- L shape inside -->
+  <rect x="16" y="14" width="3" height="12" rx="0.5" fill="#c8aa6e"/>
+  <rect x="16" y="23" width="8" height="3" rx="0.5" fill="#c8aa6e"/>
+</svg>

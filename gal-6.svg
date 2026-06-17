@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a06"/>
+      <stop offset="100%" stop-color="#1c1604"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c07a10"/>
+      <stop offset="100%" stop-color="#ffc040"/>
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1408"/>
+      <stop offset="100%" stop-color="#0a0a06"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-sm">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Altıgen arka plan deseni -->
+  <g stroke="#f5a31a" stroke-width="0.5" opacity="0.06" fill="none">
+    <polygon points="400,40 460,75 460,145 400,180 340,145 340,75"/>
+    <polygon points="400,40 460,75 460,145 400,180 340,145 340,75" transform="scale(1.7) translate(-165,-65)"/>
+    <polygon points="400,40 460,75 460,145 400,180 340,145 340,75" transform="scale(2.6) translate(-246,-108)"/>
+  </g>
+
+  <!-- Bina zemin -->
+  <rect x="0" y="310" width="800" height="140" fill="#050502"/>
+
+  <!-- Bina ana gövde -->
+  <rect x="100" y="140" width="600" height="180" fill="url(#building)" stroke="#2a2010" stroke-width="1"/>
+
+  <!-- Bina çatı -->
+  <polygon points="80,140 400,60 720,140" fill="#1a1408" stroke="#3a2a10" stroke-width="1"/>
+  <polygon points="80,140 400,60 720,140" fill="#f5a31a" opacity="0.04"/>
+
+  <!-- Bina cephe dikey çizgiler -->
+  <g stroke="#2a2010" stroke-width="1" opacity="0.5">
+    <line x1="200" y1="140" x2="200" y2="310"/>
+    <line x1="300" y1="140" x2="300" y2="310"/>
+    <line x1="400" y1="140" x2="400" y2="310"/>
+    <line x1="500" y1="140" x2="500" y2="310"/>
+    <line x1="600" y1="140" x2="600" y2="310"/>
+  </g>
+
+  <!-- Pencereler - üst kat -->
+  <g fill="#f5a31a" opacity="0.3">
+    <rect x="130" y="160" width="40" height="25" rx="2"/>
+    <rect x="190" y="160" width="40" height="25" rx="2"/>
+    <rect x="310" y="160" width="40" height="25" rx="2"/>
+    <rect x="370" y="160" width="40" height="25" rx="2"/>
+    <rect x="430" y="160" width="40" height="25" rx="2"/>
+    <rect x="570" y="160" width="40" height="25" rx="2"/>
+    <rect x="630" y="160" width="40" height="25" rx="2"/>
+  </g>
+  <!-- Pencereler - orta kat -->
+  <g fill="#f5a31a" opacity="0.2">
+    <rect x="130" y="205" width="40" height="25" rx="2"/>
+    <rect x="190" y="205" width="40" height="25" rx="2"/>
+    <rect x="310" y="205" width="40" height="25" rx="2"/>
+    <rect x="370" y="205" width="40" height="25" rx="2"/>
+    <rect x="430" y="205" width="40" height="25" rx="2"/>
+    <rect x="570" y="205" width="40" height="25" rx="2"/>
+    <rect x="630" y="205" width="40" height="25" rx="2"/>
+  </g>
+
+  <!-- Ana giriş -->
+  <rect x="335" y="240" width="130" height="80" fill="#f5a31a" opacity="0.12" rx="4"/>
+  <rect x="335" y="240" width="130" height="80" fill="none" stroke="#f5a31a" stroke-width="1.5" rx="4" opacity="0.4"/>
+  <rect x="376" y="240" width="2" height="80" fill="#f5a31a" opacity="0.2"/>
+  <rect x="422" y="240" width="2" height="80" fill="#f5a31a" opacity="0.2"/>
+  <rect x="355" y="285" width="50" height="2" fill="#f5a31a" opacity="0.3"/>
+  <rect x="395" y="285" width="50" height="2" fill="#f5a31a" opacity="0.3"/>
+
+  <!-- N logosu üstte -->
+  <g transform="translate(400,100)" filter="url(#glow-sm)">
+    <rect x="-12" y="-16" width="5" height="32" fill="url(#orange)"/>
+    <rect x="7"   y="-16" width="5" height="32" fill="url(#orange)"/>
+    <polygon points="-7,-16 7,16 7,8 -7,-8" fill="url(#orange)" opacity="0.9"/>
+  </g>
+
+  <!-- Işıklar bina kenarlarında -->
+  <g filter="url(#glow)">
+    <circle cx="100" cy="140" r="4" fill="#f5a31a" opacity="0.6"/>
+    <circle cx="700" cy="140" r="4" fill="#f5a31a" opacity="0.6"/>
+    <circle cx="400" cy="62" r="4" fill="#f5a31a" opacity="0.5"/>
+  </g>
+
+  <!-- Işık huzmesi -->
+  <line x1="400" y1="62" x2="400" y2="0" stroke="#f5a31a" stroke-width="2" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Yol / önü -->
+  <rect x="300" y="310" width="200" height="140" fill="#0e0e08"/>
+  <line x1="400" y1="310" x2="400" y2="450" stroke="#f5a31a" stroke-width="2" stroke-dasharray="12 8" opacity="0.2"/>
+
+  <!-- Sol aksan -->
+  <rect x="0" y="0" width="4" height="450" fill="url(#orange)"/>
+
+  <text x="400" y="395" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="22" font-weight="900" letter-spacing="4" opacity="0.95" filter="url(#glow)">NEXUS ARENA</text>
+  <rect x="250" y="405" width="300" height="2" rx="1" fill="url(#orange)" opacity="0.7"/>
+  <text x="400" y="427" text-anchor="middle" fill="#f5a31a" font-family="Arial,sans-serif"
+        font-size="11" letter-spacing="4" opacity="0.8">İSTANBUL 2026 · 800m²</text>
+</svg>

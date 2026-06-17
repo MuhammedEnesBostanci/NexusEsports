@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#272829"/>
+      <stop offset="100%" stop-color="#0d0e0f"/>
+    </linearGradient>
+    <linearGradient id="letter" x1="24" y1="8" x2="24" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffc336"/>
+      <stop offset="100%" stop-color="#e8960e"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Clipped-corner background (esports angular aesthetic) -->
+  <polygon points="10,0 48,0 48,48 0,48 0,10" fill="url(#bg)"/>
+
+  <!-- Top-left orange corner accent -->
+  <polygon points="0,10 10,0 13,0 0,13" fill="#f5a31a"/>
+
+  <!-- Bottom orange bar -->
+  <rect x="0" y="42" width="48" height="6" fill="#f5a31a" rx="0"/>
+
+  <!-- N letter: left vertical bar -->
+  <rect x="8"  y="10" width="6" height="26" rx="1" fill="url(#letter)" filter="url(#glow)"/>
+
+  <!-- N letter: right vertical bar -->
+  <rect x="34" y="10" width="6" height="26" rx="1" fill="url(#letter)" filter="url(#glow)"/>
+
+  <!-- N letter: diagonal connector (top-left → bottom-right) -->
+  <polygon points="14,10 20,10 34,34 34,36 28,36" fill="url(#letter)" filter="url(#glow)"/>
+
+  <!-- Subtle right-side accent dot -->
+  <circle cx="40" cy="7" r="2" fill="#f5a31a" opacity="0.5"/>
+</svg>

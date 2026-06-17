@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1e38"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a07820"/>
+      <stop offset="100%" stop-color="#ffd060"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0bc4e3"/>
+      <stop offset="100%" stop-color="#0880a0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Arka plan daireler -->
+  <circle cx="400" cy="200" r="200" fill="none" stroke="#0bc4e3" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="400" cy="200" r="150" fill="none" stroke="#0bc4e3" stroke-width="0.5" opacity="0.12"/>
+  <circle cx="400" cy="200" r="100" fill="none" stroke="#d4a82c" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Kule sol -->
+  <g transform="translate(120,250)">
+    <rect x="-20" y="-160" width="40" height="180" fill="#0a1830" stroke="#1a3060" stroke-width="1"/>
+    <rect x="-25" y="-165" width="50" height="15" fill="#1a2850"/>
+    <polygon points="-25,-165 0,-210 25,-165" fill="#1a3880"/>
+    <rect x="-8" y="-120" width="16" height="20" fill="#0bc4e3" opacity="0.3"/>
+    <rect x="-8" y="-80" width="16" height="20" fill="#0bc4e3" opacity="0.2"/>
+  </g>
+
+  <!-- Kule sağ -->
+  <g transform="translate(680,250)">
+    <rect x="-20" y="-160" width="40" height="180" fill="#0a1830" stroke="#1a3060" stroke-width="1"/>
+    <rect x="-25" y="-165" width="50" height="15" fill="#1a2850"/>
+    <polygon points="-25,-165 0,-210 25,-165" fill="#1a3880"/>
+    <rect x="-8" y="-120" width="16" height="20" fill="#0bc4e3" opacity="0.3"/>
+    <rect x="-8" y="-80" width="16" height="20" fill="#0bc4e3" opacity="0.2"/>
+  </g>
+
+  <!-- Merkez kalkan -->
+  <g transform="translate(400,195)" filter="url(#glow)">
+    <path d="M0,-95 L66,-57 L76,28 L0,95 L-76,28 L-66,-57 Z"
+          fill="none" stroke="url(#gold)" stroke-width="2.5" opacity="0.6"/>
+    <path d="M0,-65 L46,-38 L52,18 L0,65 L-52,18 L-46,-38 Z"
+          fill="#0bc4e3" opacity="0.07"/>
+    <line x1="-52" y1="-8" x2="52" y2="-8" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+    <polygon points="0,-50 24,-14 -24,-14" fill="url(#gold)" opacity="0.35"/>
+    <text x="0" y="45" text-anchor="middle" fill="url(#teal)" font-family="Arial Black,sans-serif"
+          font-size="10" letter-spacing="1" opacity="0.8">LoL</text>
+  </g>
+
+  <!-- Zemin -->
+  <rect x="0" y="360" width="800" height="90" fill="#050a14"/>
+  <rect x="0" y="355" width="800" height="8" fill="#0bc4e3" opacity="0.1"/>
+
+  <!-- Üst/Alt çizgi aksan -->
+  <line x1="0" y1="0" x2="800" y2="0" stroke="url(#gold)" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="450" x2="800" y2="450" stroke="url(#gold)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Sol aksan -->
+  <rect x="0" y="0" width="4" height="450" fill="url(#teal)"/>
+
+  <text x="400" y="400" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="20" font-weight="900" letter-spacing="4" opacity="0.95" filter="url(#glow)">LEAGUE OF LEGENDS</text>
+  <rect x="230" y="410" width="340" height="2" rx="1" fill="url(#gold)" opacity="0.7"/>
+  <text x="400" y="432" text-anchor="middle" fill="url(#teal)" font-family="Arial,sans-serif"
+        font-size="11" letter-spacing="4" opacity="0.8">SÜPER LİG YARI FİNAL 2026</text>
+</svg>

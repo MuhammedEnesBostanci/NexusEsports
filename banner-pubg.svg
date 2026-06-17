@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#0e0c06"/>
+      <stop offset="60%" stop-color="#1a1608"/>
+      <stop offset="100%" stop-color="#261c08"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#c08010"/>
+      <stop offset="100%" stop-color="#f0b030"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Kamuflaj soyut lekeleri -->
+  <ellipse cx="150" cy="120" rx="120" ry="80" fill="#1c1a0a" opacity="0.6"/>
+  <ellipse cx="650" cy="300" rx="140" ry="90" fill="#1c1a0a" opacity="0.6"/>
+  <ellipse cx="400" cy="80"  rx="100" ry="60" fill="#1c1a0a" opacity="0.5"/>
+  <ellipse cx="200" cy="340" rx="100" ry="60" fill="#201e0a" opacity="0.5"/>
+  <ellipse cx="620" cy="100" rx="80"  ry="50" fill="#201e0a" opacity="0.4"/>
+
+  <!-- Radar çemberleri -->
+  <circle cx="400" cy="200" r="160" fill="none" stroke="#c08010" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="400" cy="200" r="100" fill="none" stroke="#c08010" stroke-width="0.5" opacity="0.12"/>
+  <circle cx="400" cy="200" r="50"  fill="none" stroke="#f0b030" stroke-width="1"   opacity="0.2"/>
+  <!-- Radar çizgileri -->
+  <line x1="240" y1="200" x2="560" y2="200" stroke="#c08010" stroke-width="0.5" opacity="0.15"/>
+  <line x1="400" y1="40"  x2="400" y2="360" stroke="#c08010" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Sol aksan -->
+  <rect x="0" y="0" width="4" height="420" fill="url(#amber)"/>
+
+  <!-- Başlık -->
+  <text x="400" y="280" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="62" font-weight="900" letter-spacing="6" opacity="0.9" filter="url(#glow)">PUBG MOBILE</text>
+  <rect x="240" y="294" width="320" height="2" rx="1" fill="url(#amber)" opacity="0.8"/>
+  <text x="400" y="322" text-anchor="middle" fill="#c08010" font-family="Arial,sans-serif"
+        font-size="12" letter-spacing="4" opacity="0.8">NATIONS CUP TÜRKİYE 2026</text>
+</svg>

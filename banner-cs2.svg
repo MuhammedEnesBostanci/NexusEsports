@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#080e22"/>
+      <stop offset="60%"  stop-color="#111a3c"/>
+      <stop offset="100%" stop-color="#1a2860"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#4060e0"/>
+      <stop offset="100%" stop-color="#90a8ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Arka plan -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Grid çizgileri -->
+  <g stroke="#4060e0" stroke-width="0.5" opacity="0.12">
+    <line x1="0" y1="70"  x2="800" y2="70"/>
+    <line x1="0" y1="140" x2="800" y2="140"/>
+    <line x1="0" y1="210" x2="800" y2="210"/>
+    <line x1="0" y1="280" x2="800" y2="280"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="100" y1="0" x2="100" y2="420"/>
+    <line x1="200" y1="0" x2="200" y2="420"/>
+    <line x1="300" y1="0" x2="300" y2="420"/>
+    <line x1="400" y1="0" x2="400" y2="420"/>
+    <line x1="500" y1="0" x2="500" y2="420"/>
+    <line x1="600" y1="0" x2="600" y2="420"/>
+    <line x1="700" y1="0" x2="700" y2="420"/>
+  </g>
+
+  <!-- Sağ üçgen vurgu -->
+  <polygon points="500,0 800,0 800,420 650,420" fill="#1e2e6a" opacity="0.5"/>
+  <polygon points="580,0 800,0 800,280" fill="#4060e0" opacity="0.07"/>
+
+  <!-- Nişangah / Crosshair -->
+  <g transform="translate(400,210)" stroke="#4060e0" stroke-width="1.5" opacity="0.45" fill="none" filter="url(#softglow)">
+    <circle cx="0" cy="0" r="90"/>
+    <circle cx="0" cy="0" r="55" stroke-dasharray="8 4"/>
+    <circle cx="0" cy="0" r="20"/>
+    <line x1="-120" y1="0" x2="-65" y2="0"/>
+    <line x1="65"   y1="0" x2="120" y2="0"/>
+    <line x1="0" y1="-120" x2="0" y2="-65"/>
+    <line x1="0" y1="65"   x2="0" y2="120"/>
+    <line x1="-6" y1="-6" x2="6" y2="6"/>
+    <line x1="6" y1="-6"  x2="-6" y2="6"/>
+  </g>
+
+  <!-- Sol kenardaki dikey aksan -->
+  <rect x="0" y="0" width="4" height="420" fill="url(#accentGrad)"/>
+
+  <!-- Başlık -->
+  <text x="400" y="185" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="96" font-weight="900" letter-spacing="6" opacity="0.92" filter="url(#glow)">CS2</text>
+  <text x="400" y="230" text-anchor="middle" fill="url(#accentGrad)" font-family="Arial,sans-serif"
+        font-size="18" font-weight="400" letter-spacing="10">COUNTER-STRIKE 2</text>
+
+  <!-- Alt çizgi -->
+  <rect x="270" y="252" width="260" height="2" rx="1" fill="url(#accentGrad)" opacity="0.8"/>
+
+  <!-- Alt tag -->
+  <text x="400" y="282" text-anchor="middle" fill="#4060e0" font-family="Arial,sans-serif"
+        font-size="12" letter-spacing="4" opacity="0.7">NEXUS SPRING CUP 2026</text>
+</svg>

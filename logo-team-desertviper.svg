@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e1000"/>
+      <stop offset="100%" stop-color="#0c0700"/>
+    </linearGradient>
+    <linearGradient id="snake" x1="8" y1="8" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f0c060"/>
+      <stop offset="100%" stop-color="#e8a020"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur in="SourceGraphic" stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <polygon points="8,0 40,0 40,40 0,40 0,8" fill="url(#bg)"/>
+  <polygon points="0,8 8,0 11,0 0,11" fill="#e8a020"/>
+  <rect x="0" y="36" width="40" height="4" fill="#e8a020"/>
+  <!-- Snake S-curve body -->
+  <path d="M28 8 Q34 8 34 14 Q34 20 20 20 Q6 20 6 26 Q6 34 14 34"
+        stroke="url(#snake)" stroke-width="4.5" fill="none"
+        stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- Snake head -->
+  <ellipse cx="28" cy="8" rx="4" ry="3.5" fill="url(#snake)" filter="url(#glow)"/>
+  <!-- Fangs -->
+  <polygon points="25.5,10.5 24,14 27,11.5" fill="#fff" opacity="0.8"/>
+  <polygon points="29.5,10.5 31,14 28,11.5" fill="#fff" opacity="0.8"/>
+  <!-- Eye -->
+  <circle cx="30" cy="7" r="1.2" fill="#101010"/>
+  <circle cx="30.5" cy="6.5" r="0.4" fill="#e8a020"/>
+  <!-- Rattle tail tip -->
+  <rect x="12" y="32" width="5" height="4" rx="1" fill="url(#snake)" opacity="0.7"/>
+</svg>

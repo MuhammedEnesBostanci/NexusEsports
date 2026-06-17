@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#050d18"/>
+      <stop offset="60%" stop-color="#091628"/>
+      <stop offset="100%" stop-color="#0a2038"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#a07820"/>
+      <stop offset="50%"  stop-color="#d4a82c"/>
+      <stop offset="100%" stop-color="#ffd060"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0bc4e3"/>
+      <stop offset="100%" stop-color="#0890a8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Arkaplan daireler -->
+  <circle cx="400" cy="210" r="200" fill="none" stroke="#0bc4e3" stroke-width="0.5" opacity="0.12"/>
+  <circle cx="400" cy="210" r="160" fill="none" stroke="#0bc4e3" stroke-width="0.5" opacity="0.1"/>
+  <circle cx="400" cy="210" r="120" fill="none" stroke="#d4a82c" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Kraliyet arması / kalkan şekli -->
+  <g transform="translate(400,185)" filter="url(#glow)">
+    <!-- Kalkan dış hat -->
+    <path d="M0,-100 L70,-60 L80,30 L0,100 L-80,30 L-70,-60 Z"
+          fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.5"/>
+    <!-- Kalkan iç -->
+    <path d="M0,-70 L50,-40 L55,20 L0,70 L-55,20 L-50,-40 Z"
+          fill="#0bc4e3" opacity="0.06"/>
+    <!-- Orta çizgi -->
+    <line x1="-55" y1="-10" x2="55" y2="-10" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+    <!-- Üst üçgen -->
+    <polygon points="0,-55 25,-15 -25,-15" fill="url(#gold)" opacity="0.3"/>
+  </g>
+
+  <!-- Yatay aksan çizgileri -->
+  <line x1="0" y1="0" x2="800" y2="0" stroke="url(#gold)" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="420" x2="800" y2="420" stroke="url(#gold)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Sol aksan -->
+  <rect x="0" y="0" width="4" height="420" fill="url(#teal)"/>
+
+  <!-- Başlık -->
+  <text x="400" y="335" text-anchor="middle" fill="#ffffff" font-family="Arial Black,sans-serif"
+        font-size="32" font-weight="900" letter-spacing="8" opacity="0.9" filter="url(#glow)">LEAGUE OF LEGENDS</text>
+  <rect x="220" y="348" width="360" height="2" rx="1" fill="url(#gold)" opacity="0.8"/>
+  <text x="400" y="374" text-anchor="middle" fill="url(#teal)" font-family="Arial,sans-serif"
+        font-size="12" letter-spacing="5" opacity="0.9">SÜPER LİG YAZ SEZONU 2026</text>
+</svg>

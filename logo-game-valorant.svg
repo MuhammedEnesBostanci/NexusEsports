@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1f0005"/>
+      <stop offset="100%" stop-color="#0a0002"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" fill="url(#bg)"/>
+  <rect x="0" y="36" width="40" height="4" fill="#ff4655"/>
+  <!-- V slash shape (left bar angled) -->
+  <polygon points="6,7 14,7 20,33 17,33" fill="#ff4655"/>
+  <!-- Right bar (straight down-left to right) -->
+  <polygon points="20,33 23,33 34,7 26,7" fill="#ff4655"/>
+</svg>
